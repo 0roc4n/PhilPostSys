@@ -935,6 +935,25 @@
         font-weight: 500;
     }
 
+    .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+
+        /* Adjust the alignment of the icon and text */
+    .btn .align-icon {
+        vertical-align: middle; /* Align the icon vertically in the middle */
+        margin-right: 2px; /* Add some space between the icon and text */
+    }
+
+    .btn .align-text {
+        vertical-align: middle; /* Align the text vertically in the middle */
+    }
+
+
 </style>
 <div class="mssg position-fixed top-6 start-50 translate-middle-x h-5 w-1/4 z-50">
     <div class="mssg">
@@ -984,7 +1003,12 @@
                                 <th class="textStyle" scope="row-item">{{ $addressee->zip}}</th>
                                 <th class="textStyle" scope="row-item">{{ $addressee->province }}</th>
                                 <td>
-                                    <a href="{{ url('/update-addressee/'.$addressee->id) }}" class="btn btn-warning whitespace-nowrap"><i class="fa-solid fa-pen white"></i>Update</a>
+
+                                <a href="{{ url('/update-addressee/'.$addressee->id) }}" class="btn btn-warning whitespace-nowrap">
+                                    <span class="material-symbols-outlined align-icon">draft_orders</span>
+                                    <span class="align-text">Update</span>
+                                </a>
+
                                 </td>
                             </tr>
                         @endforeach

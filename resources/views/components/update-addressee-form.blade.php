@@ -202,7 +202,6 @@
         animation: fadeIn 0.4s forwards; 
     }
 
-
     .display-6 {
         color: #909090;
         font-size: 30px;
@@ -240,7 +239,7 @@
         @csrf
         <div class="border rounded-md p-3">
             <div class="row">
-                <h1 class="text-gray-700 mb-3 ml-1">Addressee Information:</h1>
+                <h1 class="text-gray-700 mb-3 ml-1">Addressee Information</h1>
 
                 <div class="col-md-3 mb-2">
                     <div class="relative">
@@ -263,7 +262,7 @@
         </div>
 
         <div class="mt-7 border rounded-md p-3">
-            <h1 class="text-gray-700 mb-3 ml-1">Addressee Address:</h1>
+            <h1 class="text-gray-700 mb-3 ml-1">Addressee Address</h1>
 
             <div class="col-md-12">
                 <div class="col-md-12">

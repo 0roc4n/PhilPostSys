@@ -241,7 +241,7 @@ body {
 .cardBox .card .numbers {
   position: relative;
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--blue);
 }
 
@@ -253,7 +253,7 @@ body {
 }
 
 .cardBox .card .iconBx {
-  font-size: 40px;
+  font-size: 30px;
   color: var(--black2);
 }
 
@@ -626,7 +626,7 @@ body {
                             },
                             xaxis: {
                                 categories: [
-                                    @foreach($transmittalsChar as $date)
+                                    @foreach($transmittalsChar as $date),
                                         '{{ $date }}',
                                     @endforeach
                                 ]

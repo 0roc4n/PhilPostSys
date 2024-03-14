@@ -995,7 +995,7 @@
                                 <form method="POST" action="{{ route('transmittals.destroy', $record->id) }}">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="button" class="btn btn-danger delete-button" data-delete-url="{{ route('transmittals.destroy', $record->id) }}" title="Delete Transmittal 2Record">Delete</button>
+                                    <button type="button" class="btn btn-danger delete-button" data-delete-url="{{ route('transmittals.destroy', $record->id) }}" title="Delete Transmittal Record">Delete</button>
                                 </form>
                             </div>
                         </div>

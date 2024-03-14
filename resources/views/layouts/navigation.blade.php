@@ -125,6 +125,7 @@
         </div>
     </div>
 </nav>
+
 <!-- <div x-show="open" @click.away="open = false" class="fixed inset-0 bg-gray-900 bg-opacity-50 sm:hidden"></div> -->
 <div class="hidden lg:block fixed bottom-0 w-full md:w-1/6 bg-white md:h-screen lg:pt-16" :class="{ '-translate-x-full': !open, 'translate-x-0': open }">
     <div class="lg:block hidden text-black mt-3">
