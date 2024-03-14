@@ -131,7 +131,7 @@
     <div class="lg:block hidden text-black mt-3">
         <div class="hover:bg-gray-300 rounded mx-3 text-sm">
             <a href="{{ route('dashboard') }}" class="flex items-center p-2 mb-1 {{ Request::is('dashboard') ? 'bg-blue-600 text-white rounded' : 'text-gray-700' }} hover:text-black">
-                <i class="fa-solid fa-chart-simple mr-4 ml-2"></i>
+                <i class="fa-solid fa-chart-simple mr-3 ml-2"></i>
                 {{ __('Dashboard') }}
             </a>
         </div>
@@ -143,19 +143,19 @@
         </div>
         <div class="hover:bg-gray-300 rounded mx-3 text-sm">
             <a href="{{ route('add_transmittal') }}" class="flex items-center p-2 mb-1 {{ Request::is('add_transmittal') ? 'bg-blue-600 text-white rounded' : 'text-gray-700' }} hover:text-black">
-                <i class="fa-solid fa-pen-nib mr-3 ml-2"></i>
+                <i class="fa-solid fa-feather mr-3 ml-2"></i>
                 {{ __('Add New Transmittal') }}
             </a>
         </div>
         <div class="hover:bg-gray-300 rounded mx-3 text-sm">
             <a href="{{ route('new-addressee') }}" class="flex items-center p-2 mb-1 {{ Request::is('new-addressee') ? 'bg-blue-600 text-white rounded' : 'text-gray-700' }} hover:text-black">
-                <i class="fa-solid fa-plus mr-3 ml-2"></i>
+                <i class="fa-solid fa-person-circle-plus mr-3 ml-2"></i>
                 {{ __('Add New Addressee') }}
             </a>
         </div>
         <div class="hover:bg-gray-300 rounded mx-3 text-sm">
             <a href="{{ route('show-addressee') }}" class="flex items-center p-2 {{ Request::is('show-addressee') ? 'bg-blue-600 text-white rounded' : 'text-gray-700' }} hover:text-black">
-                <i class="fa-solid fa-book mr-3 ml-2"></i>
+                <i class="fa-solid fa-book-bookmark mr-3 ml-2"></i>
                 {{ __('Addressee List') }}
             </a>
         </div>

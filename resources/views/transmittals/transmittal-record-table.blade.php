@@ -422,7 +422,7 @@
         .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
         color: white !important;
         border: 1px solid #111;
-        background-color: #585858;
+        background-color: white;
         background: -webkit-gradient(
             linear,
             left top,
@@ -711,21 +711,22 @@
     }
 
     .tracking {
-    padding: 15px;
+    padding-right: 5px;
     color: #9F9F9F;
     }   
 
     .rounded-container {
         border: 1px solid #ccc; 
         border-radius: 20px; 
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding: 5px;
         background-color: #ffffff;
+        display: inline-block;
     }
 
     .custom-line {
     border: 90px; 
     margin-top: 20px; 
+    width: 100%;
     }
 
     .form-control {
@@ -811,41 +812,53 @@
         font-weight: 500;
     }
 
+    .nowrap {
+    white-space: nowrap;
+    }
+
+    .cut{
+        width: 99%;
+        margin: auto;
+        color: white;
+        
+    }
+
 </style>
 
     <div class="container">
         <div class="row mt-3 align-items-center">
             <div class="col">
-                <div class="d-flex align-items-center">
-                    <a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>
-                    <h1 class="display-6" style="margin-left: -5px;">Transmittal Record</h1>
-                    <span style="margin-left: 15px; border: 1px solid blue; border-radius: 40px; padding: 4px 11px; color: #0026C8; font-size: 20px; font-weight: bold;">{{$count}} Records</span>
-                </div>
+            <div class="d-flex align-items-center">
+                <a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>
+                <h1 class="display-6 nowrap" style="margin-left: -5px;">Transmittal Record</h1> 
+                <span id="recordCount" style="margin-left: 15px; border: 1px solid #909090; border-radius: 40px; padding: 4px 11px; color: #909090; font-size: 19px; font-weight: bold; white-space: nowrap;">{{$count}} Records</span>            </div>
+
             </div>
-        <div class="col text-end">
-            <button class="btn btn-outline-success" onclick="exportToExcel()">
-                <i class="fa-solid fa-table"></i>
-                <span>Export as Excel</span>
-            </button>
+            <div class="col text-end">
+                <button class="btn btn-outline-success nowrap" onclick="exportToExcel()">
+                    <i class="fa-solid fa-table"></i>
+                    <span>Export as Excel</span>
+                </button>
+            </div>
         </div>
     </div>
-</div>
 
         <div class="row mt-3">
         <!-- First Column -->
         <div class="col-lg-4">
-            <div class="rounded-container">
-                <span class="tracking mx-2">Tracking Number</span>
-                <div class="d-flex justify-content-between mx-4 py-1">
-                    <span class="bold highlight">
-                        <p class="">
+            <div class="rounded-container d-inline-block">
+                <div class="d-flex align-items-center mx-1 py-1">
+                    <span class="tracking mx-1 nowrap">Tracking Number</span>
+                    <span class="bold highlight nowrap">
                         <i class="fa-solid fa-caret-right"></i>
                         {{ $records->mailTrackNum }}
                         <i class="fa-solid fa-caret-left"></i>
-                        </p>  
                     </span>
                 </div>
             </div>
+
+
+
                 <p class="labelsdate"><br />Date Posted</p>
                 <p><span class="bold-date">{{ date('F j, Y', strtotime($records->date)) }}</span></p>
                 <hr class="custom-line" /><br>
@@ -1014,6 +1027,7 @@
             }
         });
     }
+
 
 </script>
 

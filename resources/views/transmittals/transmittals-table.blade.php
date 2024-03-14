@@ -422,50 +422,15 @@
         box-shadow: none;
         }
         .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-        color: white !important;
-        border: 1px solid #111;
-        background-color: #585858;
-        background: -webkit-gradient(
-            linear,
-            left top,
-            left bottom,
-            color-stop(0%, #585858),
-            color-stop(100%, #111)
-        );
-        /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top, #585858 0%, #111 100%);
-        /* Chrome10+,Safari5.1+ */
-        background: -moz-linear-gradient(top, #585858 0%, #111 100%);
-        /* FF3.6+ */
-        background: -ms-linear-gradient(top, #585858 0%, #111 100%);
-        /* IE10+ */
-        background: -o-linear-gradient(top, #585858 0%, #111 100%);
-        /* Opera 11.10+ */
-        background: linear-gradient(to bottom, #585858 0%, #111 100%);
-        /* W3C */
+        color: #2b2b2b !important;
+        border: 1px solid white;
+        background-color: white;
         }
         .dataTables_wrapper .dataTables_paginate .paginate_button:active {
         outline: none;
-        background-color: #2b2b2b;
-        background: -webkit-gradient(
-            linear,
-            left top,
-            left bottom,
-            color-stop(0%, #2b2b2b),
-            color-stop(100%, #0c0c0c)
-        );
-        /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
-        /* Chrome10+,Safari5.1+ */
-        background: -moz-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
-        /* FF3.6+ */
-        background: -ms-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
-        /* IE10+ */
-        background: -o-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
-        /* Opera 11.10+ */
-        background: linear-gradient(to bottom, #2b2b2b 0%, #0c0c0c 100%);
-        /* W3C */
-        box-shadow: inset 0 0 3px #111;
+        background-color: white;
+        background: white;
+        border: 1px solid #2b2b2b;
         }
         .dataTables_wrapper .dataTables_paginate .ellipsis {
         padding: 0 1em;
@@ -634,14 +599,14 @@
             margin-top: 0.5em;
         }
         }
-        @media screen and (max-width: 767px) {
+        @media screen and (max-width: 640px) {
+        .dataTables_wrapper .dataTables_length{
+            float: none;
+            text-align: start;
+        }
         .dataTables_wrapper .dataTables_filter {
             float: none;
             text-align: end;
-        }
-        .dataTables_wrapper .dataTables_length {
-            float: none;
-            text-align: start;
         }
         .dataTables_wrapper .dataTables_filter {
             margin-top: 0.5em;
