@@ -620,12 +620,12 @@ body {
                                 {
                                     name: 'Return Count',
                                     type: 'line', // Change the type to line
-                                    data: [10, 15, 8, 20, 12, 25, 18, 22, 30, 16, 12, 28]
+                                    data: [10, 15, 8, 20, 12, 25, 18, 22, 179, 16, 12, 28, 45, 33]
                                 },
                                 {
                                     name: 'Return Rate',
                                     type: 'line', // Change the type to line
-                                    data: [1, 4, 2, 5, 3, 6, 5, 17, 9, 4, 3, 7]
+                                    data: [1, 4, 2, 5, 3, 6, 5, 17, 9, 4, 3, 7, 67 ]
                                 }
                             ],
                             chart: {
@@ -644,7 +644,7 @@ body {
                             },
                             xaxis: {
                                 categories: [
-                                    @foreach($transmittalsChar as $date),
+                                    @foreach(array_reverse($transmittalsChar) as $date)
                                         '{{ $date }}',
                                     @endforeach
                                 ]

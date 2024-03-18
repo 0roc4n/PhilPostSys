@@ -38,6 +38,16 @@ class TransmittalController extends Controller
     
 
     public function store(Request $request) {
+        // Define validation rules
+        $rules = [
+            'mail_tn' => 'required|unique:transmittals,mailTrackNum',
+            'rrr_tns.*' => 'required|unique:return_cards,returncard',
+            // Add more rules as needed
+        ];
+    
+        // Validate the incoming request
+        $validatedData = $request->validate($rules);
+    
         // Create a new Transmittals record
         $transmittal = Transmittals::create([
             'mailTrackNum' => strtoupper($request->input('mail_tn')),
