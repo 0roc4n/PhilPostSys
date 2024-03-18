@@ -105,7 +105,7 @@ class AddresseeController extends Controller
         $count = AddresseeList::count();
         $addresseeAll = AddresseeList::select('*')->get();
 
-        return view('addressee.show-addressee')->with(['addresseeAll'=>$addresseeAll, 'count'=>$count]);
+        return view('addressee-list')->with(['addresseeAll'=>$addresseeAll, 'count'=>$count]);
     }
     
     public function destroy($id)

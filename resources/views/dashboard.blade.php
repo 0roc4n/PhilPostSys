@@ -1,4 +1,6 @@
 <x-app-layout>
+<!-- Include ApexCharts script -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>  
 <style>
 
     /* =========== Google Fonts ============ */
@@ -513,28 +515,30 @@ body {
 
 </style>
 
-<div class="mt-3 sm:ml-4 lg:mx-3 lg:ml-60 xl:ml-80">
-    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
-        <!-- ======================= Cards ================== -->
-        <div class="cardBox">
+<div class="mt-3 sm:ml-4 lg:mx-3">
+  <div class="row lg:ml-3">
+    <div class="col-2">
+    </div>
+    <div class="col-lg-10">
+      <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="p-6 text-gray-900">
+          <!-- ======================= Cards ================== -->
+          <div class="cardBox">
             <div class="card">
-                <div class="row">
-                    <!-- Left Column for Number and Title -->
-                    <div class="col">
-                        <a href="/tracer">
-                            <div class="numbers">{{ $totalTransmittals }}</div>
-                            <div class="cardName">No. of Transmittals</div>
-                        </a>
-                    </div>
-
-                    <!-- Right Column for Icon -->
-                    <div class="col-auto iconBx">
-                        <i class="fa-solid fa-envelope-open-text"></i>
-                    </div>
+              <div class="row">
+                <!-- Left Column for Number and Title -->
+                <div class="col">
+                  <a href="/tracer">
+                    <div class="numbers">{{ $totalTransmittals }}</div>
+                    <div class="cardName">No. of Transmittals</div>
+                  </a>
                 </div>
+                <!-- Right Column for Icon -->
+                <div class="col-auto iconBx">
+                  <i class="fa-solid fa-envelope-open-text"></i>
+                </div>
+              </div>
             </div>
-
             <div class="card">
               <div class="row">
                   <!-- First Column for Number or Count -->
@@ -562,26 +566,23 @@ body {
 
 
             <div class="card">
-                <div class="row">
-                    <!-- Left Column for Number and Title -->
-                    <div class="col">
-                        <a href="/tracer">
-                        <div class="numbers">
-                            {{ $mostUsedAbbreviation }}
-                            <span class="abbrevcount">{{ $mostUsedAbbreviationCount }}</span>
-                        </div>
-                        <div class="cardName">Top Transmittals</div>
-                        
-                        </a>
+              <div class="row">
+                <!-- Left Column for Number and Title -->
+                <div class="col">
+                  <a href="/tracer">
+                    <div class="numbers">
+                      {{ $mostUsedAbbreviation }}
+                      <span class="abbrevcount">{{ $mostUsedAbbreviationCount }}</span>
                     </div>
-
-                    <!-- Right Column for Icon -->
-                    <div class="col-auto iconBx">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
+                    <div class="cardName">Top Transmittals</div>
+                  </a>
                 </div>
+                <!-- Right Column for Icon -->
+                <div class="col-auto iconBx">
+                  <i class="fa-solid fa-building-columns"></i>
+                </div>
+              </div>
             </div>
-
             <div class="card">
                 <div class="row">
                     <!-- Left Column for Number and Title -->
@@ -598,148 +599,138 @@ body {
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row mx-2">
+          </div>
+          <div class="row mx-2">
             <div class="col-md-8">
-                <div class="ml-4 p-3 text-gray-700 mb-0 font-bold">
-                    Monthly Return Count and Return Rate
-                </div>
-
-                <!-- Include ApexCharts script -->
-                <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
-                <div class="  ">
-                    <!-- Chart container -->
-                    <div id="chart" class="w-full"></div>
-
-                    <!-- Your chart script -->
-                    <script>                
-                        var options = {
-                            series: [
-                                {
-                                    name: 'Return Count',
-                                    type: 'line', // Change the type to line
-                                    data: [10, 15, 8, 20, 12, 25, 18, 22, 179, 16, 12, 28, 45, 33]
-                                },
-                                {
-                                    name: 'Return Rate',
-                                    type: 'line', // Change the type to line
-                                    data: [1, 4, 2, 5, 3, 6, 5, 17, 9, 4, 3, 7, 67 ]
-                                }
-                            ],
-                            chart: {
-                                height: 350,
-                                type: 'line',
-                                stacked: false,
-                                toolbar: {
-                                    show: false
-                                }
-                            },
-                            dataLabels: {
-                                enabled: false
-                            },
-                            stroke: {
-                                curve: 'smooth'
-                            },
-                            xaxis: {
-                                categories: [
-                                    @foreach(array_reverse($transmittalsChar) as $date)
-                                        '{{ $date }}',
-                                    @endforeach
-                                ]
-                            },
-                            yaxis: [
-                                {
-                                    axisTicks: {
-                                        show: true,
-                                    },
-                                    axisBorder: {
-                                        show: true,
-                                        color: '#008FFB'
-                                    },
-                                    labels: {
-                                        style: {
-                                            color: '#008FFB',
-                                        }
-                                    },
-                                    title: {
-                                        text: "Return Count",
-                                        style: {
-                                            color: '#008FFB',
-                                        }
-                                    },
-                                    tooltip: {
-                                        enabled: true
-                                    }
-                                },
-                                {
-                                    seriesName: 'Return Rate',
-                                    opposite: true,
-                                    axisTicks: {
-                                        show: true,
-                                    },
-                                    axisBorder: {
-                                        show: true,
-                                        color: '#00E396'
-                                    },
-                                    labels: {
-                                        style: {
-                                            color: '#00E396',
-                                        }
-                                    },
-                                    title: {
-                                        text: "Return Rate",
-                                        style: {
-                                            color: '#00E396',
-                                        }
-                                    },
-                                },
-                            ],
-                            tooltip: {
-                                shared: true,
-                                intersect: false,
-                                y: {
-                                    formatter: function (y) {
-                                        if(typeof y !== "undefined") {
-                                            return y.toFixed(0) + " returns";
-                                        }
-                                        return y;
-                                    }
-                                }
-                            }
-                        };
-
-                        var chart = new ApexCharts(document.querySelector("#chart"), options);
-                        chart.render();
-                    </script>
-                </div>
+              <div class="ml-4 p-3 text-gray-700 mb-0 font-bold">
+                Monthly Return Count and Return Rate
+              </div>
+              <div>
+                <div id="chart" class="w-full"></div><!-- Chart container -->
+              </div>
             </div>
-
             <div class="col mt-4 mb-2">
               <div class="text-gray-700 font-bold text-center">Top Transmittal</div>
               <div class="card mt-2 shadow">
-                  <div class="card-body">
-                      @if($mostUsedAddresses->isEmpty())
-                          <p class="text-center">Empty Addressee</p>
-                      @else
-                          @foreach($mostUsedAddresses as $index => $topdept)
-                          <div class="box-container border mb-2 whitespace-nowrap">
-                              <div class="row py-2 mx-1 d-flex ">
-                                  <div class="col whitespace-nowrap" style="font-size: 13px; font-weight: 600;">{{ $topdept->abbrev }}</div>
-                                  <div class="col-2 justify-end mx-2">
-                                      <div class="bg-blue-600 rounded text-white inline-block px-2" style="font-size: 13px;">{{ $topdept->address_count }}</div>
-                                  </div>
-                              </div>
-                          </div>
-                          @endforeach
-                      @endif
-                  </div>
+                <div class="card-body">
+                  @if($mostUsedAddresses->isEmpty())
+                    <p class="text-center">Empty Addressee</p>
+                  @else
+                    @foreach($mostUsedAddresses as $index => $topdept)
+                    <div class="box-container border mb-2 whitespace-nowrap">
+                      <div class="row py-2 mx-1 d-flex ">
+                        <div class="col whitespace-nowrap" style="font-size: 13px; font-weight: 600;">{{ $topdept->abbrev }}</div>
+                        <div class="col-2 justify-end mx-2">
+                          <div class="bg-blue-600 rounded text-white inline-block px-2" style="font-size: 13px;">{{ $topdept->address_count }}</div>
+                        </div>
+                      </div>
+                    </div>
+                    @endforeach
+                  @endif
+                </div>
               </div>
+            </div>
           </div>
-          
         </div>
+      </div>
     </div>
-</div>
-
+  </div>
 </x-app-layout>
+<script>                
+  var options = {
+    series: [
+      {
+        name: 'Return Count',
+        type: 'line', // Change the type to line
+        data: [10, 15, 8, 20, 12, 25, 18, 22, 30, 16, 12, 28]
+      },
+      {
+        name: 'Return Rate',
+        type: 'line', // Change the type to line
+        data: [1, 4, 2, 5, 3, 6, 5, 17, 9, 4, 3, 7]
+      }
+    ],
+    chart: {
+      height: 350,
+      type: 'line',
+      stacked: false,
+      toolbar: {
+        show: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    xaxis: {
+      categories: [
+        @foreach($transmittalsChar as $date)
+          '{{ $date }}',
+        @endforeach
+      ]
+    },
+    yaxis: [
+      {
+        axisTicks: {
+          show: true,
+        },
+        axisBorder: {
+          show: true,
+          color: '#008FFB'
+        },
+        labels: {
+          style: {
+            color: '#008FFB',
+          }
+        },
+        title: {
+          text: "Return Count",
+          style: {
+            color: '#008FFB',
+          }
+        },
+        tooltip: {
+          enabled: true
+        }
+      },
+      {
+        seriesName: 'Return Rate',
+        opposite: true,
+        axisTicks: {
+          show: true,
+        },
+        axisBorder: {
+          show: true,
+          color: '#00E396'
+        },
+        labels: {
+          style: {
+            color: '#00E396',
+          }
+        },
+        title: {
+          text: "Return Rate",
+          style: {
+            color: '#00E396',
+          }
+        },
+      },
+    ],
+    tooltip: {
+      shared: true,
+      intersect: false,
+      y: {
+        formatter: function (y) {
+          if(typeof y !== "undefined") {
+            return y.toFixed(0) + " returns";
+          }
+          return y;
+        }
+      }
+    }
+  };
+  var chart = new ApexCharts(document.querySelector("#chart"), options);
+  chart.render();
+</script>

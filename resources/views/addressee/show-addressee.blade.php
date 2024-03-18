@@ -1,7 +1,5 @@
-<x-app-layout>
 <style>
    /* start - table */
-
    table.dataTable th.dt-left,
         table.dataTable td.dt-left {
         text-align: left;
@@ -1043,12 +1041,3 @@
     });
 
 </script> 
-
-<style>
-    .highlight {
-        border: 2px solid red; /* You can customize the highlighting style */
-    }
-</style>
-
-
-</x-app-layout>

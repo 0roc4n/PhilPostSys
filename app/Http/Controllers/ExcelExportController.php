@@ -56,21 +56,19 @@ class ExcelExportController extends Controller
         $rowCount = 0;
         $rowCount2 = 0;
 
-        if ($rrtnLength > 120) {
+        if ($rrtnLength > 100 && $rrtnLength > 120) {
             foreach ($exportData['rrtn'] as $index => $rrtn) {
-                if ($tnCount <= 128) 
+                if ($tnCount <= 120) 
                 {
                     $rowCount++;
                     $row = $startRow + $rowCount;
                     $col = $startCol;
     
-                    if ($row > 47) {
+                    if ($row > 45) {
                         $row = $startRow + $rowCount;
                         $rowCount = 0;
                         $startCol = chr(ord($col) + 1);
                     }
-    
-
                     $sheet->setCellValue($col . $row, $tnCount . '  .' . $rrtn);
                     $tnCount++;
                     $lastRow = $row;
@@ -78,12 +76,11 @@ class ExcelExportController extends Controller
                 else 
                 {
                     $startRow = 48;
-    
                     $rowCount2++;
                     $row = $startRow + $rowCount2;
                     $col = $startCol2;
     
-                    if ($row > 90) {
+                    if ($row > 88) {
                         $row = $startRow + $rowCount2;
                         $rowCount2 = 0;
                         $startCol2 = chr(ord($col) + 1);
@@ -93,8 +90,44 @@ class ExcelExportController extends Controller
                     $lastRow = $row;
                 }
             }
-            
-        } else if ($rrtnLength <= 120   ) {
+            if ($tnCount > 160) {
+                $lastRow = 88;
+            }
+        } else if ($rrtnLength > 100 && $rrtnLength <= 120) {
+            foreach ($exportData['rrtn'] as $index => $rrtn) {
+                if ($tnCount <= 100) 
+                {
+                    $rowCount++;
+                    $row = $startRow + $rowCount;
+                    $col = $startCol;
+    
+                    if ($row > 40) {
+                        $row = $startRow + $rowCount;
+                        $rowCount = 0;
+                        $startCol = chr(ord($col) + 1);
+                    }
+                    $sheet->setCellValue($col . $row, $tnCount . '  .' . $rrtn);
+                    $tnCount++;
+                    $lastRow = $row;
+                } 
+                else 
+                {
+                    $startRow = 48;
+                    $rowCount2++;
+                    $row = $startRow + $rowCount2;
+                    $col = $startCol2;
+    
+                    if ($row > 87) {
+                        $row = $startRow + $rowCount2;
+                        $rowCount2 = 0;
+                        $startCol2 = chr(ord($col) + 1);
+                    }
+                    $sheet->setCellValue($col . $row, $tnCount . '  .' . $rrtn);
+                    $tnCount++;
+                    $lastRow = $row;
+                }
+            }
+        } else if ($rrtnLength <= 100) {
             foreach ($exportData['rrtn'] as $index => $rrtn) {
                 $rowCount++;
                 $row = $startRow + $rowCount;
@@ -110,16 +143,10 @@ class ExcelExportController extends Controller
                 $tnCount++;
                 $lastRow = $row;
             }
+            if ($tnCount > 25) {
+                $lastRow = 41;
+            }
         }
-
-        if ($startCol2 != 'A' & $tnCount > 165) {
-            $lastRow = 91;
-        }
-
-        if ($startCol != 'A' & $tnCount <= 165) {
-            $lastRow = 41;
-        }
-        
         $sheet->setCellValue('A' . ($lastRow + 2), "Very truly yours,");
         $sheet->setCellValue('A' . $lastRow + 5, "NENITA B. PAN");
         $sheet->setCellValue('A' . $lastRow + 6, "Postmaster");

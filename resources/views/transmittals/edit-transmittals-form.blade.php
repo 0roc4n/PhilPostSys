@@ -985,7 +985,7 @@
         setTimeout(function() {
             $('#flashMessage').fadeOut('slow');
             $('#overlay').fadeOut('slow');
-        }, 2000);
+        }, 700);
     });
 
     $(document).ready(function() {
