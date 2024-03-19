@@ -682,11 +682,6 @@
         border-radius: 15px;
     }
 
-    .form-date {
-        width: 150px;
-        padding-left: 0px;
-    }
-
 
     .btn {
         border-radius: 15px;
@@ -805,10 +800,10 @@
     @csrf
     @method("PATCH")
     <div class="row mt-4">
-        <div class="col-3 form-date">
+        <div class="col-lg-2 col-md-3 my-2">
             <input value="{{ $records->date }}" type="date" name="date_posted" id="date_posted" class="form-control rounded-md text-19" style="border-color:#a0aec0;" required readonly>
         </div>
-        <div class="col-3">
+        <div class="col-lg-3 col-md-3 my-2">
             <div class="input-group">
                 <input value="{{ $records->mailTrackNum }}" placeholder="Mail Tracking Number" type="text" name="mail_tn" id="mail_tn" class="form-control tracking rounded-md text-19" style="border-color:#a0aec0;" required disabled>
                 <button id="editIcon" class="btn btn-outline-secondary" type="button">
@@ -816,7 +811,7 @@
                 </button>
             </div>
         </div>
-        <div class="col">
+        <div class="col-lg-7 col-md-6 my-2">
             <input class="form-control" list="datalistOptions" id="addresseeDataList" placeholder="Addressee" value="{{ old('addresseeDataList', $addressee->abbrev . ' - ' . $addressee->name_primary) }}" required>
             <datalist id="datalistOptions">
                 <option value="Add New Addressee"></option>
@@ -858,7 +853,7 @@
                             <form method="POST" action="{{ route('return.destroy', $rrt->id) }}" accept-charset="UTF-8">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-secondary" onclick="return confirm('Confirm delete? {{ $rrt->returncard }}')">
+                                <button type="submit" class="btn btn-secondary whitespace-nowrap" onclick="return confirm('Confirm delete? {{ $rrt->returncard }}')">
                                     <i class="fa-solid fa-circle-xmark"></i>Delete Item</button>   
                             </form>
                         </td>

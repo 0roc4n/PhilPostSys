@@ -906,6 +906,17 @@
         font-weight: 500;
     }
 
+    .counter-display {
+        border: 1px solid blue; 
+        border-radius: 40px; 
+        color: #0026C8; 
+        font-size: 20px; 
+        font-weight: bold;
+        display: inline-block; /* Ensure it's inline-block so it adjusts to content width */
+        padding: 8px 15px; /* Adjust padding as needed */
+        white-space: nowrap; /* Prevent line breaks */
+    }
+
 
 </style>
 
@@ -934,9 +945,12 @@
 <div id="overlay"></div><!-- Add overlay div -->
 
 <div class="row mb-5 align-items-center">
-    <h1 class="display-6" style="display: flex; align-items: center;">Trace Transmittals 
-        <span style="margin-left: 15px; border: 1px solid blue; border-radius: 40px; padding: 4px 11px; color: #0026C8; font-size: 20px; font-weight: bold;">{{$count}} Records</span>
-    </h1>
+    <div class="col-md-4 col-sm-6">
+        <h1 class="display-6">Trace Transmittals</h1>
+    </div>
+    <div class="col-md-2 col-sm-6 my-2">
+        <div class="counter-display text-center">{{$count}} Records</div>
+    </div>
 </div>
 
 <div class="newtb mt-5" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;">
@@ -968,8 +982,9 @@
                     <th scope="row">{{ $record->mailTrackNum }}</th>
                     <td>{{ $record->date }}</td>
                     <td><b>{{ $addressee->abbrev }}</b> <br> {{$addressee->name_primary }} {{ '-' . $addressee->name_secondary }}</td>
-                    <td>{{ $addressee->address !== null ? $addressee->address . ',' : '' }}
-                        {{ $addressee->city }}, {{ $addressee->zip }} {{ $addressee->province }}</td>
+                    <td>{{ !empty($addressee->address) ? $addressee->address . ',' : '' }}
+{{ !empty($addressee->city) ? $addressee->city . ',' : '' }}
+{{ $addressee->zip }} {{ $addressee->province }}</td>   
                     <td class="ellipsis"> <!-- Apply ellipsis to this column -->
                         @if ($rrt_n[$record->id]->isEmpty())
                             No Record Found
