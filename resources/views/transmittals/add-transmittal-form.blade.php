@@ -107,6 +107,15 @@
         font-size: 30px;
         font-weight: 500;
     }
+    .rounded-border {
+        display: inline-block;
+        text-decoration: none;
+        border: 1px solid blue;
+        border-radius: 5px;
+        padding: 2px 5px; /* Adjust padding as needed */
+        background-color: none; /* This ensures no background color */
+}
+
 </style>
 
 
@@ -132,9 +141,11 @@
     @csrf
     <div class="add-transmittal-form flex flex-col md:flex-row mb-5 mt-2 md:mx-5">
         <div class="left-section w-full md:w-1/2">
-            <div class="relative mb-2.5">
-                <input type="date" name="date_posted" id="date_posted" class="form-control block px-3 pb-2.5 pt-2.5 w-full text-sm text-dark text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required/>
-            </div>
+        <div class="relative mb-2.5">
+            <input type="date" name="date_posted" id="date_posted" class="form-control block px-3 pb-2.5 pt-2.5 w-full text-sm text-dark text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Select Date" required/>
+            <label for="mail_tn" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Select Date</label>
+        </div>
+
             <div class="relative mb-2.5">
                 <input type="text" name="mail_tn" id="mail_tn" class="text-dark form-control block px-3 pb-2.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required/>
                 <label for="mail_tn" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Mail Tracking Number</label>
@@ -148,9 +159,14 @@
                 </datalist>
                 <input class="form-control" type="hidden" name="receiver" id="receiver">
             </div>
-            <div id="popover-content" class="mt-2 text-danger" style="display: none;">
-                Invalid Addressee. <a href="#" onclick="openModal()" class="underline-link">Click here</a> to add new addressee.
-            </div>
+                <div id="popover-content" class="mt-2 text-danger" style="display: none;">
+                    Invalid Addressee. 
+                    <span class="rounded-border">
+                        <a href="#" onclick="openModal()" class="underline-link">Click here</a>
+                    </span> 
+                    to add new addressee.
+                </div>
+
             <div class="relative mb-2.5">
                 <input type="text" id="address" name="address" class="text-dark form-control block px-3 pb-2.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " readonly/>
                 <label for="address" class="absolute text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Address</label>
@@ -252,7 +268,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" onclick="closeModal()">Close</button>
-                <button type="button" class="btn btn-outline-primary" onclick="confirmSubmit()">Yes, Submit</button>
+                <button type="button" class="btn btn-outline-primary" onclick="confirmSubmit()">Submit</button>
             </div>
         </div>
     </div>
@@ -442,7 +458,7 @@
         var tn = document.getElementById('mail_tn');
         var selectedValue = this.value;
 
-        if (selectedValue === 'Add New Addressee') {
+        if (selectedValue === 'Add New Addressee') {2
             $('#newAddresseeModal').modal('show');
             this.value = '';
         } else {

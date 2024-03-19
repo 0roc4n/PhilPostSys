@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'PhilPost RRR - Log In') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -118,8 +118,10 @@
                 margin-bottom: 10px;
                 padding: 1px;
                 border: 1px solid #ccc;
-                border-radius: 4px;
+                border-radius: 15px;
+                width: 400px; /* Adjust the width as needed */
             }
+
 
             .letter input[type="submit"] {
                 padding: 5px 10px;
@@ -168,6 +170,23 @@
             .wrapper:hover .lid.one img {
                 top: -350px; /* Adjust position to fit with the opened envelope */
                 transition-delay: 0.25s;
+            }
+
+            .login-form-container {
+                width: 100%;
+                max-width: 1000px; /* Adjust as needed */
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            @media (max-width: 767px) {
+                .login-form-container {
+                    padding: 0 10px;
+                }
             }
         </style>
     </head>

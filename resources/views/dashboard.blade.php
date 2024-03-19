@@ -226,47 +226,37 @@ body {
   padding: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 15px;
+  grid-gap: 20px;
 }
 
 .cardBox .card {
   position: relative;
   background: var(--white);
-  padding: 10px;
+  padding: 20px;
   border-radius: 15px;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  line-height: 20px;
-  overflow: hidden; /* Add overflow hidden to hide any whitespace */
 }
 
 .cardBox .card .numbers {
   position: relative;
-  padding: 1px;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--blue);
 }
 
 .cardBox .card .cardName {
   color: var(--black2);
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 5px;
-  line-height: 11px; /* Adjust line-height for better readability */
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide any overflow */
-  text-overflow: ellipsis; /* Show ellipsis (...) for overflowed text */
+  line-height: 9px;
 }
 
-
 .cardBox .card .iconBx {
-  font-size: 30px;
+  font-size: 40px;
   color: var(--black2);
-  padding-right: 15px;
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide any overflow */
 }
 
 .cardBox .card:hover {
@@ -538,33 +528,23 @@ body {
                   <i class="fa-solid fa-envelope-open-text"></i>
                 </div>
               </div>
-            </div>
+          </div>
             <div class="card">
               <div class="row">
-                  <!-- First Column for Number or Count -->
-                  <div class="col">
-                      <a href="/tracer">
-                          <div class="numbers">{{ $tolNo }}</div>
-                      </a>
-                  </div>
-
-                  <!-- Second Column for Date and Text -->
-                  <div class="col">
-                      <a href="/tracer">
-                          <div class="cardName">Most No. of Transmittals</div>
-                          <div class="cardName">{{ \Carbon\Carbon::parse($freqDate)->format('F j, Y') }}</div>
-                      </a>
-                  </div>
-
-                  <!-- Third Column for Icon -->
-                  <div class="col-auto iconBx">
-                      <i class="fa-solid fa-paper-plane"></i>
-                  </div>
+                <!-- Left Column for Number and Title -->
+                <div class="col">
+                  <a href="/tracer">
+                    <div class="numbers">{{ $tolNo }}</div>
+                    <div class="cardName">Most No. of Transmittals</div>
+                    <div class="cardName">{{ \Carbon\Carbon::parse($freqDate)->format('F j, Y') }}</div>
+                  </a>
+                </div>
+                <!-- Right Column for Icon -->
+                <div class="col-auto iconBx">
+                  <i class="fa-solid fa-paper-plane"></i>
+                </div>
               </div>
-          </div>
-
-
-
+            </div>
             <div class="card">
               <div class="row">
                 <!-- Left Column for Number and Title -->

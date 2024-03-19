@@ -359,7 +359,7 @@
 
         .dataTables_wrapper .dataTables_filter input {
             border: 1px solid #aaa;
-            width: 300px;
+            width: 500px;
             border-radius: 15px;
             background-color: transparent;
         }

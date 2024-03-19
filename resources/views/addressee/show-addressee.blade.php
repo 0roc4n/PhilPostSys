@@ -964,57 +964,49 @@
 </div>
 
 <div id="overlay"></div><!-- Add overlay div -->
-
-<div class="mt-3 sm:ml-4 lg:mx-3 lg:ml-60 xl:ml-80">
-<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-    <div class="p-6 text-gray-900">
-        <h1 class="display-6" style="display: flex; align-items: center;">List Of Addressee 
-            <span style="margin-left: 15px; border: 1px solid blue; border-radius: 40px; padding: 4px 11px; color: #0026C8; font-size: 20px; font-weight: bold;">{{$count}} Records</span>
-        </h1>
-        <div class="mt-5" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;" >
-            <table class="table table-size mt-8" id="example">
-                <thead class="text-center">
-                    <tr>
-                        <th scope="col-items">Items</th>
-                        <th scope="col">Abbrev</th>
-                        <th scope="col">Department Name</th>
-                        <th scope="col">Address</th>
-                        <th scope="col">City</th>
-                        <th scope="col">ZIP Code</th>
-                        <th scope="col">Province</th>
-                        <th scope="col">Action</th>
+<h1 class="display-6" style="display: flex; align-items: center;">List Of Addressee 
+    <span style="margin-left: 15px; border: 1px solid blue; border-radius: 40px; padding: 4px 11px; color: #0026C8; font-size: 20px; font-weight: bold;">{{$count}} Records</span>
+</h1>
+<div class="mt-5" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;" >
+    <table class="table table-size mt-8" id="example">
+        <thead class="text-center">
+            <tr>
+                <th scope="col-items">Items</th>
+                <th scope="col">Abbrev</th>
+                <th scope="col">Department Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">City</th>
+                <th scope="col">ZIP Code</th>
+                <th scope="col">Province</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @if ($addresseeAll->isEmpty())
+                <tr class="border-b">
+                    <td class="textStyle" colspan="8">No Addressee Record Found</td>
+                </tr>
+            @else
+                @foreach ($addresseeAll as $index => $addressee)
+                    <tr class="hover-row">
+                        <th scope="row-item">{{ $index + 1 }}</th>
+                        <th scope="row-item">{{ $addressee->abbrev }}</th>
+                        <th class="textStyle">{{ $addressee->name_primary }}</th>
+                        <th class="textStyle" scope="row-item">{{ $addressee->address }}</th>
+                        <th class="textStyle" scope="row-item">{{ $addressee->city }}</th>
+                        <th class="textStyle" scope="row-item">{{ $addressee->zip}}</th>
+                        <th class="textStyle" scope="row-item">{{ $addressee->province }}</th>
+                        <td>
+                            <a href="{{ url('/update-addressee/'.$addressee->id) }}" class="btn btn-warning whitespace-nowrap">
+                                <span class="material-symbols-outlined align-icon">draft_orders</span>
+                                <span class="align-text">Update</span>
+                            </a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody class="text-center">
-                    @if ($addresseeAll->isEmpty())
-                        <tr class="border-b">
-                            <td class="textStyle" colspan="8">No Addressee Record Found</td>
-                        </tr>
-                    @else
-                        @foreach ($addresseeAll as $index => $addressee)
-                            <tr class="hover-row">
-                                <th scope="row-item">{{ $index + 1 }}</th>
-                                <th scope="row-item">{{ $addressee->abbrev }}</th>
-                                <th class="textStyle">{{ $addressee->name_primary }}</th>
-                                <th class="textStyle" scope="row-item">{{ $addressee->address }}</th>
-                                <th class="textStyle" scope="row-item">{{ $addressee->city }}</th>
-                                <th class="textStyle" scope="row-item">{{ $addressee->zip}}</th>
-                                <th class="textStyle" scope="row-item">{{ $addressee->province }}</th>
-                                <td>
-
-                                <a href="{{ url('/update-addressee/'.$addressee->id) }}" class="btn btn-warning whitespace-nowrap">
-                                    <span class="material-symbols-outlined align-icon">draft_orders</span>
-                                    <span class="align-text">Update</span>
-                                </a>
-
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
-                </tbody>
-            </table>
-        </div>
-    </div>
+                @endforeach
+            @endif
+        </tbody>
+    </table>
 </div>
 <script>
     $(document).ready(function() {
@@ -1030,7 +1022,7 @@
                 { responsivePriority: 2, targets: 5 }  // Adjust targets as per your requirement
             ]
         });
-        $('.dataTables_filter input').attr('placeholder', ' Search');
+        $('.dataTables_filter input').attr('placeholder', 'Search');
         $('#2').css('padding-top', '1px');
         $('.dataTables_length label').contents().filter(function() {
                 return this.nodeType === 3; // Filter out text nodes
