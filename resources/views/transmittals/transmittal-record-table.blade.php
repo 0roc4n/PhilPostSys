@@ -863,7 +863,7 @@
                     </span>          
                 </div>
             </div>
-            </div>
+        </div>
 
             <p class="labelsdate"><br />Date Posted</p>
             <p><span class="bold-date">{{ date('F j, Y', strtotime($records->date)) }}</span></p>
