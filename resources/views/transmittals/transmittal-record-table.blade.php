@@ -351,7 +351,7 @@
 
         .dataTables_wrapper .dataTables_filter input {
             border: 1px solid #aaa;
-            width: 300px;
+            width: 500px;
             border-radius: 15px;
             background-color: transparent;
         }
@@ -422,7 +422,7 @@
         .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
         color: white !important;
         border: 1px solid #111;
-        background-color: #585858;
+        background-color: white;
         background: -webkit-gradient(
             linear,
             left top,
@@ -689,10 +689,10 @@
     
     .highlight {
         background: linear-gradient(90deg, #0026C8, #2C54FF); 
-        border-radius: 10px;
+        border-radius: 13px;
         color: #FFFFFF;
         font-size: 15px;
-        padding: 4px 6px;
+        padding: 4px 79px;
     }
 
     .abbrev {
@@ -711,21 +711,26 @@
     }
 
     .tracking {
-    padding: 15px;
+    padding-right: 5px;
     color: #9F9F9F;
+    font-size: 17px;
+
     }   
 
     .rounded-container {
         border: 1px solid #ccc; 
         border-radius: 20px; 
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding: 5px;
         background-color: #ffffff;
+        display: inline-block;
+        margin-top: 10px;
+        width: 96%;
     }
 
     .custom-line {
     border: 90px; 
     margin-top: 20px; 
+    width: 95%;
     }
 
     .form-control {
@@ -792,7 +797,7 @@
 
     .fa-angle-left {
         margin-right: 20px;
-        margin-left: 5px;
+        margin-left: -15px;
         font-size: 25px;
         color: #909090;
     }
@@ -844,32 +849,37 @@
         <div class="row mt-3">
         <!-- First Column -->
         <div class="col-lg-4">
-            <div class="rounded-container">
-                <span class="tracking mx-2">Tracking Number</span>
-                <div class="d-flex justify-content-between mx-4 py-1">
-                    <span class="bold highlight">
-                        <p class="">
+            <div class="d-flex flex-column">
+            <span id="recordCount" style="border: 1px solid #0026C8; border-radius: 20px; padding: 9px 15px; width: 96%; color: #0026C8; font-size: 19px; font-weight: bold; white-space: nowrap; display: block; text-align: center;">
+                {{$count}} Records
+            </span>
+            <div class="rounded-container d-inline-block">
+                <div class="d-flex align-items-center mx-1 py-1">
+                    <span class="tracking mx-1 nowrap">Tracking Number</span>
+                    <span class="bold highlight nowrap">
                         <i class="fa-solid fa-caret-right"></i>
-                        {{ $records->mailTrackNum }}
+                        <span class="mail-track-number">{{ $records->mailTrackNum }}</span>
                         <i class="fa-solid fa-caret-left"></i>
-                        </p>  
-                    </span>
+                    </span>          
                 </div>
             </div>
-                <p class="labelsdate"><br />Date Posted</p>
-                <p><span class="bold-date">{{ date('F j, Y', strtotime($records->date)) }}</span></p>
-                <hr class="custom-line" /><br>
-                <p class="labels-address">Address<br></p>
-                <div class="bold-address">
-                    {{ $addressee->address }}<br>
-                    {{ $addressee->zip }} 
-                    {{ $addressee->city }},
-                    {{ $addressee->province }}
-                </div>
-                <hr class="custom-line" /><br>
-            </div>
+        </div>
 
-        <!-- Third Column -->
+            <p class="labelsdate"><br />Date Posted</p>
+            <p><span class="bold-date">{{ date('F j, Y', strtotime($records->date)) }}</span></p>
+            <hr class="custom-line" /><br>
+            <p class="labels-address">Address<br></p>
+            <div class="bold-address">
+                {{ $addressee->address }}<br>
+                {{ $addressee->zip }} 
+                {{ $addressee->city }},
+                {{ $addressee->province }}
+            </div>
+            <hr class="custom-line" /><br>
+        </div>
+
+
+        <!-- Second Column -->
         <div class="col-lg-8">
             <div class="container-fluid">
                 <div class="row mt-1">
@@ -878,6 +888,7 @@
                         <span class="abbrev"><i class="fa-solid fa-envelope"></i> {{ $addressee->abbrev }}</span>
                         <br>{{ $addressee->name_primary }}
                         <br><span class="secondary">{{ $addressee->name_secondary }}</span>
+                    
                     </span>
                     <div class="container-fluid my-5">
                         <div class="row justify-content-center">
@@ -1024,6 +1035,7 @@
             }
         });
     }
+
 
 </script>
 

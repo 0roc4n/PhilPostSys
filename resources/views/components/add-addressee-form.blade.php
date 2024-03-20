@@ -240,7 +240,7 @@
         </div>
 
         <div class="mt-7 box-container border rounded p-3">
-            <div class="label">Addressee Address:</div>
+            <div class="label">Addressee Address</div>
 
             <div class="col-md-12 mt-3">
                 <div class="col-md-12">

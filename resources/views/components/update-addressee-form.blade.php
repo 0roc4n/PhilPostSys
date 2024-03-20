@@ -202,7 +202,6 @@
         animation: fadeIn 0.4s forwards; 
     }
 
-
     .display-6 {
         color: #909090;
         font-size: 30px;

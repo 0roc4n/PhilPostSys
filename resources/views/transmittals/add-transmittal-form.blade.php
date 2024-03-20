@@ -266,7 +266,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" onclick="closeModal()">Close</button>
-                <button type="button" class="btn btn-outline-primary" onclick="confirmSubmit()">Yes, Submit</button>
+                <button type="button" class="btn btn-outline-primary" onclick="confirmSubmit()">Submit</button>
             </div>
         </div>
     </div>
@@ -456,7 +456,7 @@
         var tn = document.getElementById('mail_tn');
         var selectedValue = this.value;
 
-        if (selectedValue === 'Add New Addressee') {
+        if (selectedValue === 'Add New Addressee') {2
             $('#newAddresseeModal').modal('show');
             this.value = '';
         } else {
