@@ -6,7 +6,8 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Carbon\Carbon; 
+use Carbon\Carbon;
+use PhpOffice\PhpSpreadsheet\Cell\DataType; 
 
 class ExcelExportController extends Controller
 {
@@ -48,8 +49,12 @@ class ExcelExportController extends Controller
         // Set font attributes to make it bold for specific cells
 
         foreach ($data as $cell => $value) {
-            $sheet->setCellValue($cell, $value);
-
+            // Decode HTML entities before setting cell value
+            $decodedValue = html_entity_decode($value, ENT_QUOTES | ENT_HTML5);
+            
+            // Set cell value explicitly as string
+            $sheet->setCellValueExplicit($cell, $decodedValue, DataType::TYPE_STRING);
+            
             // Set font attributes to make it bold if the cell is in $boldCells array
             if (in_array($cell, $boldCells)) {
                 $sheet->getStyle($cell)->getFont()->setBold(true);

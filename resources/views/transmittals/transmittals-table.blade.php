@@ -1045,6 +1045,7 @@
             "search": ""
         },
         "scrollX": true,    // Enable horizontal scrolling
+        "order": [[1, "desc"]], // Sort by timestamp field (assuming it's the 6th column, adjust if needed)
         "fixedHeader": true, // Enable fixed header (optional, adds a fixed header when scrolling)
         "columnDefs": [
             { responsivePriority: 1, targets: 0 }, // Set priority for columns to determine visibility on smaller screens
