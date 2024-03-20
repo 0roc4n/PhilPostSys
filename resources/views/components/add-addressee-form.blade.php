@@ -69,14 +69,13 @@
         z-index: 40; /* Below flash message */
     }
 
-    .btn-clear {
+    .btn-view {
         font-size: 14px;
-        font-weight: lighter;
         color: #fff;
         padding: 8px; 
         border: none; 
         border-radius: 15px;
-        background: #18191A;
+        background: #0026C8;
         outline: none; 
         position: relative; 
         transition: all 0.4s ease;
@@ -91,25 +90,140 @@
         }
     }
 
-    .btn-clear:hover {
+
+    .btn-view:hover {
         color: #fff;
-        border-radius: 100px;
-        background: #18191A;
+        border-radius: 50px;
+        background: #0026C8;
     }
 
-    .btn-clear:hover::after {
+    .btn-view:hover::after {
         content: '';
         position: absolute;
         top: -5px;
         left: -5px; 
         right: -5px; 
         bottom: -5px; 
-        border: 2px solid #18191A; 
+        border: 2px solid #0026C8; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .btn-closs {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #646360;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-closs:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #646360;
+    }
+
+    .btn-closs:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #646360; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .btn-warning {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #FCBE00;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-warning:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #FCBE00;
+    }
+
+    .btn-warning:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #FCBE00; 
         border-radius: 50px;
         animation: fadeIn 0.4s forwards; 
     }
 
+    .btn-danger {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #EE1A2E;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
 
+    @keyframes fadeIn {
+        from {
+            opacity: 0; 
+        }
+        to {
+            opacity: 1; 
+        }
+    }
+
+
+    .btn-danger:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #EE1A2E;
+    }
+
+    .btn-danger:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #EE1A2E; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
     .btn-save {
         font-size: 14px;
         color: #fff;
@@ -194,8 +308,15 @@
         padding: 0 4px;
         color: #2d3748;
    }
+   .custom-header{
+        background-color: #0026C8;
+    }
+    .modal-title {
+    color: #ffffff;
+    }
+    
+   
 </style>
-
 <div class="mb-8">
     <div class="flex justify-between items-center">
         <h1 class="display-6"> Add New Addressee </h1>
@@ -273,11 +394,51 @@
             </div>
         </div>
         <div class="flex justify-end mt-3">
-            <button type="button" class="btn btn-clear text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onclick="clearForm()">Clear</button>
-            <button type="submit" class="btn btn-save text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full px-3 py-2.5 text-sm text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="submitBtn">Save Addressee</button>
+            <button type="button" class="btn-closs mr-3" onclick="clearForm()">Clear</button>
+            <button type="button" class="btn btn-save" id="submitBtn" onclick="showConfirmationModal()">Save Addressee</button>
         </div>
     </form>
 </div>
+
+<!-- Add your modal HTML structure -->
+<div id="confirmationModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header custom-header">
+                <h5 class="modal-title">Add New Addressee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to save this addressee?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-closs mr-3" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-save" onclick="confirmSave()">Save Addressee</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add a hidden input field to store confirmation status -->
+<input type="hidden" id="confirmationStatus" name="confirmationStatus">
+
+
+
+<script>
+    function showConfirmationModal() {
+        // Show the confirmation modal
+        $('#confirmationModal').modal('show');
+    }
+
+    function confirmSave() {
+        // Set the confirmation status to true
+        $('#confirmationStatus').val('confirmed');
+
+        // Submit the form
+        $('#addresseeForm').submit();
+    }
+</script>
+
 
 <script>
     $(document).ready(function() {

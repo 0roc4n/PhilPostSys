@@ -680,7 +680,44 @@
         border-radius: 50px;
         animation: fadeIn 0.4s forwards; 
     }
+    .btn-closs {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #646360;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
 
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-closs:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #646360;
+    }
+
+    .btn-closs:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #646360; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
     .btn-warning {
         font-size: 14px;
         color: #fff;
@@ -859,7 +896,7 @@
         color: #BB2D3B;
     }
     .custom-header{
-        background-color: #BB2D3B;
+        background-color: #EE1A2E;
     }
     .modal-title {
     color: #ffffff;
@@ -1002,7 +1039,7 @@
                 Are you sure you want to delete this record?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" onclick="closeModal()">Close</button>
+                <button type="button" class="btn btn-closs" onclick="closeModal()">Close</button>
                 <form id="deleteForm" method="POST" action="">
                     @method('DELETE')
                     @csrf
