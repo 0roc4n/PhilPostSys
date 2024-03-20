@@ -188,6 +188,14 @@
                     padding: 0 10px;
                 }
             }
+            .login-form-container {
+            margin: 0 auto;
+            padding: 0 20px; /* Adjust padding as needed */
+        }
+
+        .login-form-container {
+            margin-right: 20px; /* Adjust margin between image and form */
+        }
         </style>
     </head>
     <body>
@@ -195,7 +203,7 @@
             <div class="lid one">
                 <!-- Add an image for the photo -->
                 <img
-                    src="public/assets/PhilPost_OfficeLogo.png"
+                    src="public/assets/PHLPOSTLogo.png"
                     alt="PhilPost Office Logo"
                     width="100"
                 />
