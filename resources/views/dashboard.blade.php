@@ -528,7 +528,7 @@ body {
                   <i class="fa-solid fa-envelope-open-text"></i>
                 </div>
               </div>
-            </div>
+          </div>
             <div class="card">
               <div class="row">
                 <!-- Left Column for Number and Title -->
