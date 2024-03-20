@@ -816,30 +816,29 @@
         font-weight: 500;
     }
 
-    .nowrap {
-    white-space: nowrap;
+    .counter-display {
+        border: 1px solid blue; 
+        border-radius: 40px; 
+        color: #0026C8; 
+        font-size: 18px; 
+        font-weight: bold;
+        display: inline-block; /* Ensure it's inline-block so it adjusts to content width */
+        padding: 6px 15px; /* Adjust padding as needed */
+        white-space: nowrap; /* Prevent line breaks */
     }
-    .d-flex {
-    display: flex;
-    }
-
-    .flex-column {
-        flex-direction: column;
-    }
-
 
 </style>
 
     <div class="container">
-        <div class="row mt-3 align-items-center">
-                <div class="col">
-                    <div class="d-flex align-items-center">
-                        <a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>
-                        <h1 class="display-6 nowrap" style="margin-left: -5px;">Transmittal Record</h1> 
-                    </div>
-                </div>
-            <div class="col text-end">
-                <button class="btn btn-outline-success nowrap" onclick="exportToExcel()">
+        <div class="row mb-5 align-items-center">
+            <div class="col-md-8 col-lg-5 col-sm-6">
+                <h1 class="display-6"><a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>Transmittal Record</h1>
+            </div>
+            <div class="col-md-2 col-sm-6 col-lg-3 my-2">
+                <div class="counter-display text-center">{{$count}} Records</div>
+            </div>
+            <div class="col-md-12 col-lg-4 my-2 sm:text-end">
+                <button class="btn btn-outline-success whitespace-nowrap" onclick="exportToExcel()">
                     <i class="fa-solid fa-table"></i>
                     <span>Export as Excel</span>
                 </button>

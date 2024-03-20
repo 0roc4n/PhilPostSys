@@ -682,11 +682,6 @@
         border-radius: 15px;
     }
 
-    .form-date {
-        width: 150px;
-        padding-left: 0px;
-    }
-
 
     .btn {
         border-radius: 15px;
@@ -805,10 +800,10 @@
     @csrf
     @method("PATCH")
     <div class="row mt-4">
-        <div class="col-3 form-date">
+        <div class="col-lg-2 col-md-3 my-2">
             <input value="{{ $records->date }}" type="date" name="date_posted" id="date_posted" class="form-control rounded-md text-19" style="border-color:#a0aec0;" required readonly>
         </div>
-        <div class="col-3">
+        <div class="col-lg-3 col-md-3 my-2">
             <div class="input-group">
                 <input value="{{ $records->mailTrackNum }}" placeholder="Mail Tracking Number" type="text" name="mail_tn" id="mail_tn" class="form-control tracking rounded-md text-19" style="border-color:#a0aec0;" required disabled>
                 <button id="editIcon" class="btn btn-outline-secondary" type="button">
@@ -816,7 +811,7 @@
                 </button>
             </div>
         </div>
-        <div class="col">
+        <div class="col-lg-7 col-md-6 my-2">
             <input class="form-control" list="datalistOptions" id="addresseeDataList" placeholder="Addressee" value="{{ old('addresseeDataList', $addressee->abbrev . ' - ' . $addressee->name_primary) }}" required>
             <datalist id="datalistOptions">
                 <option value="Add New Addressee"></option>
@@ -858,7 +853,7 @@
                             <form method="POST" action="{{ route('return.destroy', $rrt->id) }}" accept-charset="UTF-8">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-secondary" onclick="return confirm('Confirm delete? {{ $rrt->returncard }}')">
+                                <button type="submit" class="btn btn-secondary whitespace-nowrap" onclick="return confirm('Confirm delete? {{ $rrt->returncard }}')">
                                     <i class="fa-solid fa-circle-xmark"></i>Delete Item</button>   
                             </form>
                         </td>
@@ -920,15 +915,31 @@
             <h5 class="modal-title" id="newRRRModalLabel">New RRR Tracking Number</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="/addReturn" method="POST">
+        <form id="returnForm" action="/addReturn" method="POST">
             @csrf
-            <div class="modal-body">
-                <input type="text" value="" name="trackingNum" class="form-control rounded-lg" placeholder="Scan or Enter a Tracking Number">
-                <input type="text" value="{{ $records->mailTrackNum }}" class="" id="last-barcode" placeholder="Transmittal_Barcode" name="truckNumMail" hidden>
+            <div class="row d-flex">
+                <div class="col-10 mx-0">
+                    <div class="relative mb-2.5 ms-2 mt-3">
+                        <input type="text" name="rrr_tn" id="rrr_tn" class="text-dark form-control block px-3 pb-2.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+                        <input type="text" value="{{ $records->mailTrackNum }}" class="" id="last-barcode" placeholder="Transmittal_Barcode" name="truckNumMail" hidden>
+                        <label for="rrr_tn" class="absolute text-sm text-indigo-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RRR Tracking Number/s</label>
+                    </div>
+                </div>
+                <div class="col-2 mx-0 mt-3">
+                    <button type="button" id="add" class="rounded-full btn-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium px-2.5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onclick="addTN()">Add</button>
+                </div>
+            </div>
+            <div class="row mt-2 m-2">
+                <div class="col">
+                    <div class="custom-border font-md rounded-md" id="rrr_div" style="border-color:#a0aec0;">
+                        <div id="rrrtn_error" class="text-danger mt-2"></div>
+                        <input type="hidden" name="rrr_tns" id="rrr_tns_input">
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save changes</button>
+                <button type="button" onclick="submitForm()" class="btn btn focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save changes</button>
             </div>
         </form>
     </div>
@@ -1109,13 +1120,52 @@
         });
     }
 
-    function submitForm() {
-        // Set the rrr_tns array value to the hidden input
-        document.getElementById('rrr_tns_input').value = JSON.stringify(rrr_tns);
+    // var rrr_tn_value = document.getElementById("rrr_tn");
+    document.getElementById("rrr_tn").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            addTN();
+        }
+    });
 
+    function addTN() {
+        var rrr_tnInput = document.getElementById('rrr_tn');
+        var rrr_tnsInput = document.getElementById('rrr_tns_input');
+        var rrrtn_error = $('#rrrtn_error');
+        
+        // Reset error message
+        rrrtn_error.text('');
+
+        if (rrr_tnInput.value.trim() === "") {
+            // Handle empty input
+            return;
+        }
+
+        var rrr_tn = rrr_tnInput.value.trim();
+        var rrr_tns = JSON.parse(rrr_tnsInput.value || '[]');
+
+        // Check if the tracking number already exists
+        if (rrr_tns.includes(rrr_tn)) {
+            rrrtn_error.text('Tracking number already added');
+            return;
+        }
+
+        rrr_tns.push(rrr_tn);
+        rrr_tnInput.value = ''; // Clear input
+        rrr_tnsInput.value = JSON.stringify(rrr_tns);
+
+        // Display added RRR tracking number
+        var rrr_div = document.getElementById('rrr_div');
+        var new_rrr_span = document.createElement('span');
+        new_rrr_span.textContent = rrr_tn;
+        new_rrr_span.className = 'badge bg-info text-dark mx-1 my-1';
+        rrr_div.appendChild(new_rrr_span);
+    }
+    
+
+    function submitForm() {
         // Submit the form
-        document.forms[0].submit();
-        $('#submitConfirmationModal').modal('hide');
+        document.getElementById('returnForm').submit();
     }
 
 </script>

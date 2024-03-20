@@ -932,6 +932,16 @@
         font-size: 30px;
         font-weight: 500;
     }
+    .counter-display {
+        border: 1px solid blue; 
+        border-radius: 40px; 
+        color: #0026C8; 
+        font-size: 18px; 
+        font-weight: bold;
+        display: inline-block; /* Ensure it's inline-block so it adjusts to content width */
+        padding: 8px 15px; /* Adjust padding as needed */
+        white-space: nowrap; /* Prevent line breaks */
+    }
 
     .material-symbols-outlined {
         font-variation-settings:
@@ -964,9 +974,14 @@
 </div>
 
 <div id="overlay"></div><!-- Add overlay div -->
-<h1 class="display-6" style="display: flex; align-items: center;">List Of Addressee 
-    <span style="margin-left: 15px; border: 1px solid blue; border-radius: 40px; padding: 4px 11px; color: #0026C8; font-size: 20px; font-weight: bold;">{{$count}} Records</span>
-</h1>
+<div class="row mb-5 align-items-center">
+    <div class="col-md-4 col-sm-6">
+        <h1 class="display-6">Trace Transmittals</h1>
+    </div>
+    <div class="col-md-2 col-sm-6 my-2">
+        <div class="counter-display text-center">{{$count}} Records</div>
+    </div>
+</div>
 <div class="mt-5" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;" >
     <table class="table table-size mt-8" id="example">
         <thead class="text-center">
