@@ -76,7 +76,8 @@ class TransmittalController extends Controller
         }
     
         // Redirect or respond as needed
-        return redirect('/tracer')->with('flash_mssg', 'Successfully Created!');
+        //return redirect('/tracer')->with('flash_mssg', 'Successfully Created!');
+        return redirect('transmittals/'.$transmittal->id)->with('flash_mssg', 'Successfully Created!');
     }
     
 
