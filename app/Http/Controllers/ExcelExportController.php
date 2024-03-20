@@ -32,11 +32,20 @@ class ExcelExportController extends Controller
             'A5' => $formattedDate,
             'A7' => strtoupper($exportData['records']['addresseePN'] ?? ''),
             'A8' => strtoupper($exportData['records']['addresseeSN'] ?? ''),
-            'A9' => capitalizeFirstLetter($exportData['records']['address']) . ', ' . capitalizeFirstLetter($exportData['records']['city']) ?? '',
+            'A9' => (isset($exportData['records']['address']) && $exportData['records']['address'] ? capitalizeFirstLetter($exportData['records']['address']) . ', ' : '') . (isset($exportData['records']['city']) ? capitalizeFirstLetter($exportData['records']['city']) : ''),
             'A10' => capitalizeFirstLetter($exportData['records']['zip']) . ' ' . capitalizeFirstLetter($exportData['records']['province']) ?? '',
         ];
+
+        if (empty($exportData['records']['addresseeSN'])) {
+            $data['A8'] = (isset($exportData['records']['address']) && $exportData['records']['address'] ? capitalizeFirstLetter($exportData['records']['address']) . ', ' : '') . (isset($exportData['records']['city']) ? capitalizeFirstLetter($exportData['records']['city']) : '');
+            $data['A9'] = capitalizeFirstLetter($exportData['records']['zip']) . ' ' . capitalizeFirstLetter($exportData['records']['province']) ?? '';
+            $data['A10'] = '';
+            $boldCells = ['D5', 'A7'];
+        } else {
+            $boldCells = ['D5', 'A7', 'A8'];
+        }
+
         // Set font attributes to make it bold for specific cells
-        $boldCells = ['D5', 'A7', 'A8'];
 
         foreach ($data as $cell => $value) {
             $sheet->setCellValue($cell, $value);
