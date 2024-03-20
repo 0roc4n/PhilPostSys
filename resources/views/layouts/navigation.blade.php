@@ -133,9 +133,7 @@
             <a href="{{ route('dashboard') }}" class="flex items-center p-2 mb-1 relative {{ Request::is('dashboard') ? 'bg-blue-600 text-white rounded' : 'text-gray-700' }} hover:text-black">
                 <i class="fa-solid fa-chart-simple mr-3 ml-2"></i>
                 {{ __('Dashboard') }}
-                @if(Request::is('dashboard'))
-                    <i class="fa-solid fa-caret-left fa-fade absolute right-3 top-1/2 transform -translate-y-1/2"></i>
-                @endif
+                
             </a>
         </div>
 
@@ -143,9 +141,7 @@
             <a href="{{ route('tracer') }}" class="flex items-center p-2 mb-1 relative {{ Request::is('tracer') ? 'bg-blue-600 text-white rounded' : 'text-gray-700' }} hover:text-black">
                 <i class="fa-solid fa-magnifying-glass mr-3 ml-2"></i>
                 {{ __('Trace Transmittals') }}
-                @if(Request::is('tracer'))
-                    <i class="fa-solid fa-caret-left fa-fade absolute right-3 top-1/2 transform -translate-y-1/2"></i>
-                @endif
+                
             </a>
         </div>
 
@@ -153,9 +149,7 @@
             <a href="{{ route('add_transmittal') }}" class="flex items-center p-2 mb-1 relative {{ Request::is('add_transmittal') ? 'bg-blue-600 text-white rounded' : 'text-gray-700' }} hover:text-black">
                 <i class="fa-solid fa-pencil mr-3 ml-2"></i>
                 {{ __('Add New Transmittal') }}
-                @if(Request::is('add_transmittal'))
-                    <i class="fa-solid fa-caret-left fa-fade absolute right-3 top-1/2 transform -translate-y-1/2"></i>
-                @endif
+                
             </a>
         </div>
 
@@ -163,9 +157,7 @@
             <a href="{{ route('new-addressee') }}" class="flex items-center p-2 mb-1 relative {{ Request::is('new-addressee') ? 'bg-blue-600 text-white rounded' : 'text-gray-700' }} hover:text-black">
                 <i class="fa-solid fa-person-circle-plus mr-3 ml-2"></i>
                 {{ __('Add New Addressee') }}
-                @if(Request::is('new-addressee'))
-                    <i class="fa-solid fa-caret-left fa-fade absolute right-3 top-1/2 transform -translate-y-1/2"></i>
-                @endif
+                
             </a>
         </div>
 
@@ -173,9 +165,7 @@
             <a href="{{ route('show-addressee') }}" class="flex items-center p-2 relative {{ Request::is('show-addressee') ? 'bg-blue-600 text-white rounded' : 'text-gray-700' }} hover:text-black">
                 <i class="fa-solid fa-book-bookmark mr-4 ml-2"></i>
                 {{ __('Addressee List') }}
-                @if(Request::is('show-addressee'))
-                    <i class="fa-solid fa-caret-left fa-fade absolute right-3 top-1/2 transform -translate-y-1/2"></i>
-                @endif
+                
             </a>
         </div>
 

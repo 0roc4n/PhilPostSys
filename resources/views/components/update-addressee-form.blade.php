@@ -236,7 +236,7 @@
 <div>
     <div class="col">
         <div class="d-flex align-items-center">
-            <a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>
+            <a href="{{ url('/show-addressee') }}"><i class="fa-solid fa-angle-left"></i></a>
             <h1 class="display-6" style="margin-left: -5px;">Update Addressee</h1>
         </div>
     </div>

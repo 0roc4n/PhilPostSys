@@ -692,7 +692,7 @@
         border-radius: 13px;
         color: #FFFFFF;
         font-size: 15px;
-        padding: 4px 79px;
+        padding: 4px 4px;
     }
 
     .abbrev {
@@ -834,8 +834,7 @@
             <div class="col-md-8 col-lg-5 col-sm-6">
                 <h1 class="display-6"><a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>Transmittal Record</h1>
             </div>
-            <div class="col-md-2 col-sm-6 col-lg-3 my-2">
-                <div class="counter-display text-center">{{$count}} Records</div>
+            <div class="col-md-2 col-sm-6 col-lg-3 my-1">
             </div>
             <div class="col-md-12 col-lg-4 my-2 sm:text-end">
                 <button class="btn btn-outline-success whitespace-nowrap" onclick="exportToExcel()">
