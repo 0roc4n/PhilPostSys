@@ -211,16 +211,35 @@
     .border{
         border-radius: 20px;
     }
+    .rounded {
+        border-radius: 11px !important;
+    }
+    .box-container {
+        width: full;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 16px;
+        position: relative;
+    }
 
+    .label {
+        position: absolute;
+        top: -10px;
+        left: 15px;
+        background-color: #fff;
+        padding: 0 4px;
+        color: #2d3748;
+   }
 </style>
 
 <div>
-            <div class="col">
-                <div class="d-flex align-items-center">
-                    <a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>
-                    <h1 class="display-6" style="margin-left: -5px;">Update Addressee</h1>
-                </div>
-            </div>
+    <div class="col">
+        <div class="d-flex align-items-center">
+            <a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>
+            <h1 class="display-6" style="margin-left: -5px;">Update Addressee</h1>
+        </div>
+    </div>
     <div class="mssg position-fixed top-6 start-50 translate-middle-x h-5 w-1/4 z-50">
         <div class="mssg">
             @if(session('flash_mssg'))
@@ -237,10 +256,9 @@
 <div class="row mt-3">
     <form action="/update-addressee-submit/{{ $record->id }}" method="post" id="addresseeForm">
         @csrf
-        <div class="border rounded-md p-3">
-            <div class="row">
-                <h1 class="text-gray-700 mb-3 ml-1">Addressee Information</h1>
-
+        <div class="box-container rounded mt-3">
+            <div class="label">Addressee Information</div>
+            <div class="row mt-3">
                 <div class="col-md-3 mb-2">
                     <div class="relative">
                         <input type="text" name="nameAbbrev" id="nameAbbrev" class="form-control block px-2.5 pb-2.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-indigo-500 focus:outline-none focus:ring-0 focus:border-indigo-600 peer text-dark" value="{{ $record->abbrev}}" required>
@@ -261,10 +279,9 @@
             </div>
         </div>
 
-        <div class="mt-7 border rounded-md p-3">
-            <h1 class="text-gray-700 mb-3 ml-1">Addressee Address</h1>
-
-            <div class="col-md-12">
+        <div class="box-container rounded mt-4">
+            <div class="label">Addressee Address</div>
+            <div class="col-md-12 mt-3">
                 <div class="col-md-12">
                     <div class="relative">
                         <input type="text" name="address" id="address" class="form-control block px-2.5 pb-2.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-indigo-500 focus:outline-none focus:ring-0 focus:border-indigo-600 peer text-dark" value="{{ $record->address}}" />

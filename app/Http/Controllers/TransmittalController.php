@@ -107,6 +107,8 @@ class TransmittalController extends Controller
 
     public function edit($id){  
         $records = Transmittals::find($id);
+        $rrr_tn = ReturnCards::where('trucknumber', $records->mailTrackNum)->get();
+        $count = $rrr_tn->count();
         if (!$records) {
             return redirect()->route('/transmittals')->with('flash_message', 'Transmittal not found');
         }
@@ -114,9 +116,8 @@ class TransmittalController extends Controller
         $addressee = AddresseeList::find($records->recieverName);
         $rrr_tn = ReturnCards::where('trucknumber', $records->mailTrackNum)->get();
     
-        return view('edit-transmitttals', compact('records', 'addressee', 'rrr_tn'));
+        return view('edit-transmitttals', compact('records', 'addressee', 'rrr_tn', 'count'));
     }
-    
     
     public function update(Request $request, $id)
     {

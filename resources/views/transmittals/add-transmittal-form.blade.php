@@ -125,7 +125,7 @@
 
 <div id="overlay"></div> <!-- Add overlay div -->
 
-<div class="ml-8">
+<div class="ml-5">
     <div class="row">
         <h1 class="display-6"> Add New Transmittal </h1>
     </div>

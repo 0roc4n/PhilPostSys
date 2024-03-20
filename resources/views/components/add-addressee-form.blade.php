@@ -189,11 +189,11 @@
     .label {
         position: absolute;
         top: -10px;
-        left: 10px;
+        left: 15px;
         background-color: #fff;
         padding: 0 4px;
-        color: #718096 !important;
-    }
+        color: #2d3748;
+   }
 </style>
 
 <div class="mb-8">

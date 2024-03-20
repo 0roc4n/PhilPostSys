@@ -761,17 +761,117 @@
         display: none; /* Initially hidden */
         z-index: 40; /* Below flash message */
     }
+    .btn-warning {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #FCBE00;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+    .btn-warning:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #FCBE00;
+    }
 
+    .btn-warning:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #FCBE00; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .btn-submit {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #0026C8;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+    .btn-submit:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #0026C8;
+    }
+    .btn-submit:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #0026C8; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .btn-danger {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #EE1A2E;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+    .btn-danger:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #EE1A2E;
+    }
+    .btn-danger:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #EE1A2E; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .custom-header{
+        background-color: #0026C8;
+    }
+    .modal-title {
+    color: #ffffff;
+    }
+    .counter-display {
+        border: 1px solid blue; 
+        border-radius: 40px; 
+        color: #0026C8; 
+        font-size: 18px; 
+        font-weight: bold;
+        display: inline-block; /* Ensure it's inline-block so it adjusts to content width */
+        padding: 6px 15px; /* Adjust padding as needed */
+        white-space: nowrap; /* Prevent line breaks */
+    }
 </style>
 <div id="overlay"></div>
-<div class="row mt-3 align-items-center">
-    <div class="col">
-        <div class="d-flex align-items-center">
-            <a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>
-            <h1 class="display-6 ml-3">Update Transmittal</h1>
-        </div>
+<div class="row mt-2 align-items-center">
+    <div class="d-flex col-md-8 col-lg-5 col-sm-6 align-items-center"> <!-- Added align-items-center -->
+        <a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>
+        <h1 class="display-6 ml-3">Update Transmittal</h1>
+    </div>
+
+    <div class="col-md-2 col-sm-6 col-lg-3">
+        <div class="counter-display text-center">{{$count}} Records</div>
     </div>
 </div>
+
 
 <div class="mssg position-fixed top-8 start-50 translate-middle-x w-1/4 z-50">
     <div class="mssg">
@@ -822,14 +922,14 @@
             </div>
         </div>
     </div>
-    <div class="text-end mt-3">
-        <button type="submit" class="btn focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 dark:focus:ring-green-900">Update</button>
-        <button type="button" class="btn focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" data-bs-toggle="modal" data-bs-target="#newRRRModal">Add RRR TN</button>
+    <div class="text-end mt-2">
+        <button type="submit" class="btn btn-warning mr-2">Update</button>
+        <button type="button" class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#newRRRModal">Add RRR TN</button>
     </div>
 </form>
 
 <div class="content my-5">
-    <table class="table table-size mt-4 hover" id="returnCardsTable" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;">
+    <table class="table table-size hover" id="returnCardsTable" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;">
         <thead class="text-center">
         <tr>
             <th scope="col">Items</th>
@@ -911,7 +1011,7 @@
 <div class="modal fade" id="newRRRModal" tabindex="-1" aria-labelledby="newRRRModalLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header custom-header">
             <h5 class="modal-title" id="newRRRModalLabel">New RRR Tracking Number</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
