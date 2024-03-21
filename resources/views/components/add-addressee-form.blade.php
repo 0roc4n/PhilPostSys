@@ -317,7 +317,7 @@
     
    
 </style>
-<div class="mb-8">
+<div class="ml-1">
     <div class="flex justify-between items-center">
         <h1 class="display-6"> Add New Addressee </h1>
     </div>
@@ -335,7 +335,7 @@
 <div id="overlay"></div><!-- Add overlay div -->
 
 <div class="row mt-3">
-    <form action="/add_addressee" method="post" id="addresseeForm">
+<form action="/add_addressee" method="POST" id="addresseeForm" class="p-3 needs-validation" onsubmit="event.preventDefault(); showConfirmationModal();">
         @csrf
         <div class="box-container rounded border">
             <div class="label">Addressee Information:</div>
@@ -395,13 +395,12 @@
         </div>
         <div class="flex justify-end mt-3">
             <button type="button" class="btn-closs mr-3" onclick="clearForm()">Clear</button>
-            <button type="button" class="btn btn-save" id="submitBtn" onclick="showConfirmationModal()">Save Addressee</button>
+            <button type="submit" class="btn btn-save" id="submitBtn">Save Addressee</button>
         </div>
     </form>
 </div>
-
 <!-- Add your modal HTML structure -->
-<div id="confirmationModal" class="modal fade" tabindex="-1" role="dialog">
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header custom-header">
@@ -412,54 +411,29 @@
                 Are you sure you want to save this addressee?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-closs mr-3" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-save" onclick="confirmSave()">Save Addressee</button>
+                <button type="button" class="btn btn-closs mr-3" onclick="closeModal()">Cancel</button>
+                <button type="button" class="btn btn-save" onclick="confirmSubmit()">Save Addressee</button>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Add a hidden input field to store confirmation status -->
-<input type="hidden" id="confirmationStatus" name="confirmationStatus">
-
-
-
-<script>
-    function showConfirmationModal() {
-        // Show the confirmation modal
-        $('#confirmationModal').modal('show');
-    }
-
-    function confirmSave() {
-        // Set the confirmation status to true
-        $('#confirmationStatus').val('confirmed');
-
-        // Submit the form
-        $('#addresseeForm').submit();
-    }
-</script>
-
 
 <script>
     $(document).ready(function() {
         if ($('#flashMessage').length > 0) {
             $('#overlay').fadeIn('slow');
         }
-
         setTimeout(function() {
             $('#flashMessage').fadeOut('slow');
             $('#overlay').fadeOut('slow');
         }, 1000);
     });
-
     $(document).ready(function () {
         $('#nameAbbrev').on('blur', checkMailTrackingNumber);
     });
-
     function checkMailTrackingNumber() {
         var nameAbbrev = $('#nameAbbrev').val();
         console.log(nameAbbrev);
-
         $.ajax({
             type: 'GET',
             url: '/checkAddressee',
@@ -468,11 +442,9 @@
             error: handleCheckError
         });
     }
-
     function handleCheckSuccess(response) {
         var abbrevErrorElement = $('#abbrev_error');
         var submitButton = $('#submitBtn');
-
         if (response.exists) {
             abbrevErrorElement.html('<i class="fa-solid fa-circle-exclamation fa-fade fa-sm"></i>   Addressee already exists');
             console.log('Addressee already exists');
@@ -492,5 +464,15 @@
         // Clear all input fields inside the form
         document.getElementById("addresseeForm").reset();
     }
-
+</script>
+<script>
+    function confirmSubmit() {
+        document.getElementById('addresseeForm').submit();
+    }
+    function showConfirmationModal() {
+        $('#confirmationModal').modal('show');
+    }
+    function closeModal() {
+        $('#confirmationModal').modal('hide');
+    }
 </script>
