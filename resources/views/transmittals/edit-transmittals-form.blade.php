@@ -649,28 +649,29 @@
     /* end - table */
 
     .custom-border {
-        border: 2px solid #333; /* Change #333 to the desired dark color code */
-        padding: 20px;
-        margin-left: 5px;
-        max-width: 540px;
+        border: 1px solid #d8d8d8; /* Change #333 to the desired dark color code */
+        border-radius: 15px;
+        padding: 30px 10px;
     }
 
     .container {
         position: relative;
         max-width: 200px;
         margin-left: 5px;
-        margin-right: 20px;
+        margin-right: 15px;
+        margin-top: 5px;
         background-color: #fff;
-        padding: 20px;
+        padding: 10px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
+
     .exit-button {
         position: absolute;
-        top: 20px;
+        top: 10px;
         right: 10px;
         cursor: pointer;
-        font-size: 18px;
+        font-size: 15px;
         color: #333;
     }    
 
@@ -1009,29 +1010,27 @@
 
 <!-- modal for add RRR TN -->
 <div class="modal fade" id="newRRRModal" tabindex="-1" aria-labelledby="newRRRModalLabel" aria-hidden="true">
-<div class="modal-dialog">
+<div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header custom-header">
             <h5 class="modal-title" id="newRRRModalLabel">New RRR Tracking Number</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form id="returnForm" action="/addReturn" method="POST">
+        <form id="returnForm" action="/addReturn" method="POST" class="form-inline">
             @csrf
-            <div class="row d-flex">
-                <div class="col-10 mx-0">
-                    <div class="relative mb-2.5 ms-2 mt-3">
+            <div class="row mx-4">
+                <div class="col-11">
+                    <div class="relative mb-2.5 mt-3">
                         <input type="text" name="rrr_tn" id="rrr_tn" class="text-dark form-control block px-3 pb-2.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
                         <input type="text" value="{{ $records->mailTrackNum }}" class="" id="last-barcode" placeholder="Transmittal_Barcode" name="truckNumMail" hidden>
                         <label for="rrr_tn" class="absolute text-sm text-indigo-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">RRR Tracking Number/s</label>
                     </div>
                 </div>
-                <div class="col-2 mx-0 mt-3">
+                <div class="col-1 mt-3">
                     <button type="button" id="add" class="rounded-full btn-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium px-2.5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onclick="addTN()">Add</button>
                 </div>
-            </div>
-            <div class="row mt-2 m-2">
-                <div class="col">
-                    <div class="custom-border font-md rounded-md" id="rrr_div" style="border-color:#a0aec0;">
+                <div class="col-12 mr-2 mt-3 mb-3">
+                    <div class="custom-border row font-md" id="rrr_div">
                         <div id="rrrtn_error" class="text-danger mt-2"></div>
                         <input type="hidden" name="rrr_tns" id="rrr_tns_input">
                     </div>
@@ -1256,10 +1255,19 @@
 
         // Display added RRR tracking number
         var rrr_div = document.getElementById('rrr_div');
-        var new_rrr_span = document.createElement('span');
-        new_rrr_span.textContent = rrr_tn;
-        new_rrr_span.className = 'badge bg-info text-dark mx-1 my-1';
+        var new_rrr_span = document.createElement('div');
+        new_rrr_span.className = 'container my-2 rounded-md';
+        new_rrr_span.innerHTML = `<span class="exit-button" onclick="removeTN(this.parentNode, '${rrr_tn}')">✖</span><p>${rrr_tn}</p>`;
         rrr_div.appendChild(new_rrr_span);
+    }
+
+    function removeTN(element, rrr_tn_value) {
+        element.parentNode.removeChild(element);
+
+        var index = rrr_tns.indexOf(rrr_tn_value);
+        if (index !== -1) {
+            rrr_tns.splice(index, 1);
+        }
     }
     
 
