@@ -136,7 +136,160 @@
         border-radius: 50px;
         animation: fadeIn 0.4s forwards; 
     }
+    .btn-closs {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #646360;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
 
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-closs:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #646360;
+    }
+
+    .btn-closs:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #646360; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .btn-warning {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #FCBE00;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-warning:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #FCBE00;
+    }
+
+    .btn-warning:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #FCBE00; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+
+    .btn-danger {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #EE1A2E;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; 
+        }
+        to {
+            opacity: 1; 
+        }
+    }
+
+
+    .btn-danger:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #EE1A2E;
+    }
+
+    .btn-danger:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #EE1A2E; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .btn-save {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #0026C8;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-save:hover {
+        color: #fff;
+        border-radius: 100px;
+        background: #0026C8;
+    }
+
+    .btn-save:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #0026C8; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
 
     .display-6 {
         color: #909090;
@@ -231,30 +384,35 @@
         padding: 0 4px;
         color: #2d3748;
    }
+   .custom-header{
+        background-color: #0026C8;
+    }
+    .modal-title {
+    color: #ffffff;
+    }
+    
 </style>
 
-<div>
-    <div class="col">
-        <div class="d-flex align-items-center">
-            <a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>
-            <h1 class="display-6" style="margin-left: -5px;">Update Addressee</h1>
-        </div>
+<div class="col">
+    <div class="d-flex align-items-center">
+        <a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>
+        <h1 class="display-6" style="margin-left: -5px;">Update Addressee</h1>
     </div>
-    <div class="mssg position-fixed top-6 start-50 translate-middle-x h-5 w-1/4 z-50">
-        <div class="mssg">
-            @if(session('flash_mssg'))
-                <div id="flashMessage" class="alert alert-primary" role="alert">
-                    <p>{{ session('flash_mssg') }}</p>
-                </div>
-            @endif
-        </div>
+</div>
+<div class="mssg position-fixed top-6 start-50 translate-middle-x h-5 w-1/4 z-50">
+    <div class="mssg">
+        @if(session('flash_mssg'))
+            <div id="flashMessage" class="alert alert-primary" role="alert">
+                <p>{{ session('flash_mssg') }}</p>
+            </div>
+        @endif
     </div>
 </div>
 
 <div id="overlay"></div><!-- Add overlay div -->
 
 <div class="row mt-3">
-    <form action="/update-addressee-submit/{{ $record->id }}" method="post" id="addresseeForm">
+    <form action="/update-addressee-submit/{{ $record->id }}" method="post" id="addresseeForm" onsubmit="event.preventDefault(); showConfirmationModal();">
         @csrf
         <div class="box-container rounded mt-3">
             <div class="label">Addressee Information</div>
@@ -317,18 +475,47 @@
     </form>
 </div>
 
+<!-- Add your modal HTML structure -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header custom-header">
+                <h5 class="modal-title">Add New Addressee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to save this addressee?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-closs mr-3" onclick="closeModal()">Cancel</button>
+                <button type="button" class="btn btn-save" onclick="confirmSubmit()">Save Addressee</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
+    function confirmSubmit() {
+        document.getElementById('addresseeForm').submit();
+    }
+    function showConfirmationModal() {
+        $('#confirmationModal').modal('show');
+    }
+    function closeModal() {
+        $('#confirmationModal').modal('hide');
+    }
+</script>
+<script> 
     $(document).ready(function() {
         if ($('#flashMessage').length > 0) {
             $('#overlay').fadeIn('slow');
         }
-
         setTimeout(function() {
             $('#flashMessage').fadeOut('slow');
             $('#overlay').fadeOut('slow');
         }, 1000);
-    });
-    
+    });  
     document.getElementById('addresseeDataList').addEventListener('input', handleAddresseeDataListInput);
     document.addEventListener('DOMContentLoaded', fetchAddressees);
     
