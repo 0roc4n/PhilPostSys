@@ -480,15 +480,15 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header custom-header">
-                <h5 class="modal-title">Add New Addressee</h5>
+                <h5 class="modal-title">Update Addressee</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to save this addressee?
+                Are you sure you want to save changes?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-closs mr-3" onclick="closeModal()">Cancel</button>
-                <button type="button" class="btn btn-save" onclick="confirmSubmit()">Save Addressee</button>
+                <button type="button" class="btn btn-save" onclick="confirmSubmit()">Save, Changes</button>
             </div>
         </div>
     </div>
