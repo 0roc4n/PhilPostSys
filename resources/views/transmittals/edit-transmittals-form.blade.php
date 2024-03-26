@@ -944,7 +944,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to update this Transmittal Record?
+                Are you sure you want to update Transmittal Record?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger mr-3" onclick="closeModal()">Cancel</button>
