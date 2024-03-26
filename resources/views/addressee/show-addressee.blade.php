@@ -976,7 +976,7 @@
 <div id="overlay"></div><!-- Add overlay div -->
 <div class="row mb-5 align-items-center">
     <div class="col-md-4 col-sm-6">
-        <h1 class="display-6">Trace Transmittals</h1>
+        <h1 class="display-6">List of Addressee</h1>
     </div>
     <div class="col-md-2 col-sm-6 my-2">
         <div class="counter-display text-center">{{$count}} Records</div>
