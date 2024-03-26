@@ -859,6 +859,13 @@
         padding: 6px 15px; /* Adjust padding as needed */
         white-space: nowrap; /* Prevent line breaks */
     }
+    .custom-header{
+        background-color: #0026C8;
+    }
+    .modal-title {
+    color: #ffffff;
+    }
+    
 </style>
 <div id="overlay"></div>
 <div class="row mt-2 align-items-center">
@@ -896,7 +903,7 @@
 @endif -->
 
 {{-- this form for update  --}}
-<form action="{{ url('transmittals/'. $records->id. '/update') }}" method="POST" class="p-3 needs-validation" onsubmit="submitForm()">
+<form action="{{ url('transmittals/'. $records->id. '/update') }}" method="POST" class="p-3 needs-validation" onsubmit="event.preventDefault(); showconfirmationModal();">
     @csrf
     @method("PATCH")
     <div class="row mt-4">
@@ -927,6 +934,25 @@
         <button type="button" class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#newRRRModal">Add RRR TN</button>
     </div>
 </form>
+
+<!-- Modal for Update transmittal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header custom-header">
+                <h5 class="modal-title">Update Transmittal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to update this Transmittal Record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger mr-3" onclick="closeModal()">Cancel</button>
+                <button type="button" class="btn btn-submit" onclick="submitForm()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="content my-5">
     <table class="table table-size hover" id="returnCardsTable" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;">
@@ -963,7 +989,6 @@
         </tbody>
     </table>
 </div>
-</div>
 
 <!--  modal for creating new addressee-->
 <div class="modal fade" id="newAddresseeModal" tabindex="-1" role="dialog" aria-labelledby="newAddresseeModalLabel" aria-hidden="true">
@@ -999,8 +1024,8 @@
                 <input type="text" name="province" id="province" class="form-control mb-2" placeholder="Province"   required>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" onclick="closeModal()">Close</button>
-                <button type="submit" class="btn btn-outline-primary" onclick="saveAddresee()">Save Addressee</button>
+                <button type="button" class="btn btn-danger" onclick="closeModal()">Close</button>
+                <button type="submit" class="btn btn-submit" onclick="saveAddresee()">Save Addressee</button>
             </div>
         </form>
     </div>
@@ -1008,15 +1033,15 @@
 </div>
 
 <!-- modal for add RRR TN -->
-<div class="modal fade" id="newRRRModal" tabindex="-1" aria-labelledby="newRRRModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header custom-header">
-            <h5 class="modal-title" id="newRRRModalLabel">New RRR Tracking Number</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form id="returnForm" action="/addReturn" method="POST">
-            @csrf
+<form id="returnForm" action="/addReturn" method="POST" onsubmit="event.preventDefault(); showConfirmationModal();">
+    @csrf
+    <div class="modal fade" id="newRRRModal" tabindex="-1" aria-labelledby="newRRRModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header custom-header">
+                <h5 class="modal-title" id="newRRRModalLabel">New RRR Tracking Number</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="row d-flex">
                 <div class="col-10 mx-0">
                     <div class="relative mb-2.5 ms-2 mt-3">
@@ -1026,7 +1051,7 @@
                     </div>
                 </div>
                 <div class="col-2 mx-0 mt-3">
-                    <button type="button" id="add" class="rounded-full btn-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium px-2.5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onclick="addTN()">Add</button>
+                    <button type="button" id="add" class="btn btn-submit" onclick="addTN()">Add</button>
                 </div>
             </div>
             <div class="row mt-2 m-2">
@@ -1038,12 +1063,31 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" data-bs-dismiss="modal">Close</button>
-                <button type="button" onclick="submitForm()" class="btn btn focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save changes</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-submit">Submit</button>
             </div>
         </form>
     </div>
 </div>
+</div>
+
+<!-- confirmation modal-->
+<div class="modal fade" id="ConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header custom-header">
+                <h5 class="modal-title">New RRR Tracking Number </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to Save Changes?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger mr-3" onclick="closeModal()">Cancel</button>
+                <button type="button" class="btn btn-submit" onclick="submitForm()">Save Changes</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Modal -->
@@ -1080,8 +1124,8 @@
                 <input type="text" name="province" id="province" class="form-control mb-2" placeholder="Province"   required>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" onclick="closeModal()">Close</button>
-                <button type="submit" class="btn btn-outline-primary" onclick="saveAddresee()">Save Addressee</button>
+                <button type="button" class="btn btn-danger" onclick="closeModal()">Close</button>
+                <button type="submit" class="btn btn-submit" onclick="saveAddresee()">Save Addressee</button>
             </div>
         </form>
     </div>
@@ -1261,8 +1305,17 @@
         new_rrr_span.className = 'badge bg-info text-dark mx-1 my-1';
         rrr_div.appendChild(new_rrr_span);
     }
-    
-
+        //Need to 'o'
+    function showconfirmationModal() {
+        $('#confirmationModal').modal('show'); 
+    }
+    function showConfirmationModal() {
+        $('#newRRRModal').modal('hide'); 
+        $('#ConfirmationModal').modal('show'); 
+    }
+    function closeModal() {
+        $('#ConfirmationModal').modal('hide');
+    }
     function submitForm() {
         // Submit the form
         document.getElementById('returnForm').submit();
