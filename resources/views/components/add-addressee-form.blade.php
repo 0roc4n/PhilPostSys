@@ -200,6 +200,7 @@
     <div class="flex justify-between items-center">
         <h1 class="display-6"> Add New Addressee </h1>
     </div>
+        <p class="text-gray-400 ml-4">Please fill in all fields with an asterisk (*) </p>
 </div>
 <div class="mssg position-fixed top-6 start-50 translate-middle-x h-5 w-1/4 z-50">
     <div class="mssg">
@@ -217,12 +218,12 @@
     <form action="/add_addressee" method="post" id="addresseeForm">
         @csrf
         <div class="box-container rounded border">
-            <div class="label">Addressee Information:</div>
+            <div class="label">Addressee Information</div>
             <div class="row mt-3">
                 <div class="col-md-3 mb-2">
                     <div class="relative">
                         <input type="text" name="nameAbbrev" id="nameAbbrev" class="form-control block px-2.5 pb-2.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-indigo-500 focus:outline-none focus:ring-0 focus:border-indigo-600 peer text-dark" placeholder="ex. DOH-RO5" required>
-                        <label for="nameAbbrev" class="absolute text-sm text-indigo-500 dark:text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white h-50 font-weight: lighter; dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Addressee Abbreviation *</label>
+                        <label for="nameAbbrev" class="absolute text-sm text-indigo-500 dark:text-indigo-600 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white h-50 font-weight: lighter; dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-indigo-600 peer-focus:dark:text-indigo-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Addressee Abbreviation *</label>
                     </div>
                     <div id="abbrev_error" class="text-danger mt-2 mb-2"></div>
                 </div>

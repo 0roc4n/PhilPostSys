@@ -705,6 +705,11 @@
         -webkit-text-fill-color: transparent;
     }
 
+    .primary {
+        color: #222222;
+        font-size: 20px;
+    }
+
     .secondary {
         color: #909090;
         font-size: 20px;
@@ -771,6 +776,11 @@
         display: none;
     }
 
+    .fa-solid.fa-caret-right,
+    .fa-solid.fa-caret-left {
+        padding: 0 4px; /* Adjust the padding as needed */
+    }
+
     .hover-row:hover .caret {
         display: inline;
     }
@@ -827,28 +837,33 @@
         white-space: nowrap; /* Prevent line breaks */
     }
 
+    .mb-3 {
+    margin-bottom: 0px !important; /* Adjust the margin as needed */
+}
+
+
 </style>
 
-    <div class="container">
-        <div class="row mb-5 align-items-center">
-            <div class="col-md-8 col-lg-5 col-sm-6">
-                <h1 class="display-6"><a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>Transmittal Record</h1>
-            </div>
-            <div class="col-md-2 col-sm-6 col-lg-3 my-1">
-            </div>
-            <div class="col-md-12 col-lg-4 my-2 sm:text-end">
-                <button class="btn btn-outline-success whitespace-nowrap" onclick="exportToExcel()">
-                    <i class="fa-solid fa-table"></i>
-                    <span>Export as Excel</span>
-                </button>
-            </div>
+<div class="container">
+    <div class="row mb-3 align-items-center"> <!-- Reduced margin here -->
+        <div class="col-md-8 col-lg-5 col-sm-6">
+            <h1 class="display-6"><a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>Transmittal Record</h1>
+        </div>
+        <div class="col-md-2 col-sm-6 col-lg-3 my-1">
+        </div>
+        <div class="col-md-12 col-lg-4 my-2 sm:text-end">
+            <button class="btn btn-outline-success whitespace-nowrap" onclick="exportToExcel()">
+                <i class="fa-solid fa-table"></i>
+                <span>Export as Excel</span>
+            </button>
         </div>
     </div>
+</div>
 
-        <div class="row mt-3">
-        <!-- First Column -->
-        <div class="col-lg-4">
-            <div class="d-flex flex-column">
+<div class="row mt-3">
+    <!-- First Column -->
+    <div class="col-lg-4">
+        <div class="d-flex flex-column">
             <span id="recordCount" style="border: 1px solid #0026C8; border-radius: 20px; padding: 9px 15px; width: 96%; color: #0026C8; font-size: 19px; font-weight: bold; white-space: nowrap; display: block; text-align: center;">
                 {{$count}} Records
             </span>
@@ -885,7 +900,7 @@
                     <p class="labels-addressee">Addressee<br /></p>
                     <span class="bold-addressee">
                         <span class="abbrev"><i class="fa-solid fa-envelope"></i> {{ $addressee->abbrev }}</span>
-                        <br>{{ $addressee->name_primary }}
+                        <br><span class="primary">{{ $addressee->name_primary }}</span>
                         <br><span class="secondary">{{ $addressee->name_secondary }}</span>
                     
                     </span>
