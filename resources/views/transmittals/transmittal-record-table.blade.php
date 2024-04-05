@@ -836,7 +836,28 @@
         padding: 6px 15px; /* Adjust padding as needed */
         white-space: nowrap; /* Prevent line breaks */
     }
-
+    #flashMessage.alert-primary {
+        background-color:#0D6EFD; 
+        color: #fff;
+        text-align: center; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600; 
+        position: relative; /* Add relative positioning for overlay */
+        z-index: 50;
+        border-radius: 15px !important;
+    }
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity as needed */
+        display: none; /* Initially hidden */
+        z-index: 40; /* Below flash message */
+    }
     .mb-3 {
     margin-bottom: 0px !important; /* Adjust the margin as needed */
 }
@@ -844,21 +865,33 @@
 
 </style>
 
-<div class="container">
-    <div class="row mb-3 align-items-center"> <!-- Reduced margin here -->
-        <div class="col-md-8 col-lg-5 col-sm-6">
-            <h1 class="display-6"><a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>Transmittal Record</h1>
+    <div class="container">
+        <div class="mssg position-fixed top-6 start-50 translate-middle-x h-5 w-1/4 z-50">
+            <div class="mssg">
+                @if(session('flash_mssg'))
+                    <div id="flashMessage" class="alert alert-primary" role="alert">
+                        <p>{{ session('flash_mssg') }}</p>
+                    </div>
+                @endif
+            </div>
         </div>
-        <div class="col-md-2 col-sm-6 col-lg-3 my-1">
-        </div>
-        <div class="col-md-12 col-lg-4 my-2 sm:text-end">
-            <button class="btn btn-outline-success whitespace-nowrap" onclick="exportToExcel()">
-                <i class="fa-solid fa-table"></i>
-                <span>Export as Excel</span>
-            </button>
+        
+        <div id="overlay"></div><!-- Add overlay div -->
+        <div class="row mb-5 align-items-center">
+            <div class="col-md-8 col-lg-5 col-sm-6">
+                <h1 class="display-6"><a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>Transmittal Record</h1>
+            </div>
+            <div class="col-md-2 col-sm-6 col-lg-3 my-2">
+                <div class="counter-display text-center">{{$count}} Records</div>
+            </div>
+            <div class="col-md-12 col-lg-4 my-2 sm:text-end">
+                <button class="btn btn-outline-success whitespace-nowrap" onclick="exportToExcel()">
+                    <i class="fa-solid fa-table"></i>
+                    <span>Export as Excel</span>
+                </button>
+            </div>
         </div>
     </div>
-</div>
 
 <div class="row mt-3">
     <!-- First Column -->
@@ -961,6 +994,16 @@
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     <script>
+        $(document).ready(function() {
+        if ($('#flashMessage').length > 0) {
+            $('#overlay').fadeIn('slow');
+        }
+
+        setTimeout(function() {
+            $('#flashMessage').fadeOut('slow');
+            $('#overlay').fadeOut('slow');
+        }, 1000);
+    });
         $(document).ready(function() {
             $('#example').DataTable({
                 "lengthMenu": [[-1], ["All"]],
