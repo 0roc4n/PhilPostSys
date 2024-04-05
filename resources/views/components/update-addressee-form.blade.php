@@ -514,7 +514,7 @@
         setTimeout(function() {
             $('#flashMessage').fadeOut('slow');
             $('#overlay').fadeOut('slow');
-        }, 1000);
+        }, 400);
     });  
     document.getElementById('addresseeDataList').addEventListener('input', handleAddresseeDataListInput);
     document.addEventListener('DOMContentLoaded', fetchAddressees);
