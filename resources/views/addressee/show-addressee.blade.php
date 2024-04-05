@@ -358,7 +358,7 @@
 
         .dataTables_wrapper .dataTables_filter input {
             border: 1px solid #aaa;
-            width: 300px;
+            width: 500px;
             border-radius: 15px;
             background-color: transparent;
         }
@@ -976,7 +976,7 @@
 <div id="overlay"></div><!-- Add overlay div -->
 <div class="row mb-5 align-items-center">
     <div class="col-md-4 col-sm-6">
-        <h1 class="display-6">List of Addressee</h1>
+        <h1 class="display-6">Addressee List</h1>
     </div>
     <div class="col-md-2 col-sm-6 my-2">
         <div class="counter-display text-center">{{$count}} Records</div>

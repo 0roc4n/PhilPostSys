@@ -692,7 +692,7 @@
         border-radius: 13px;
         color: #FFFFFF;
         font-size: 15px;
-        padding: 4px 79px;
+        padding: 4px 4px;
     }
 
     .abbrev {
@@ -703,6 +703,11 @@
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+
+    .primary {
+        color: #222222;
+        font-size: 20px;
     }
 
     .secondary {
@@ -769,6 +774,11 @@
     .caret {
         margin-right: 5px;
         display: none;
+    }
+
+    .fa-solid.fa-caret-right,
+    .fa-solid.fa-caret-left {
+        padding: 0 4px; /* Adjust the padding as needed */
     }
 
     .hover-row:hover .caret {
@@ -848,6 +858,11 @@
         display: none; /* Initially hidden */
         z-index: 40; /* Below flash message */
     }
+    .mb-3 {
+    margin-bottom: 0px !important; /* Adjust the margin as needed */
+}
+
+
 </style>
 
     <div class="container">
@@ -878,10 +893,10 @@
         </div>
     </div>
 
-        <div class="row mt-3">
-        <!-- First Column -->
-        <div class="col-lg-4">
-            <div class="d-flex flex-column">
+<div class="row mt-3">
+    <!-- First Column -->
+    <div class="col-lg-4">
+        <div class="d-flex flex-column">
             <span id="recordCount" style="border: 1px solid #0026C8; border-radius: 20px; padding: 9px 15px; width: 96%; color: #0026C8; font-size: 19px; font-weight: bold; white-space: nowrap; display: block; text-align: center;">
                 {{$count}} Records
             </span>
@@ -918,7 +933,7 @@
                     <p class="labels-addressee">Addressee<br /></p>
                     <span class="bold-addressee">
                         <span class="abbrev"><i class="fa-solid fa-envelope"></i> {{ $addressee->abbrev }}</span>
-                        <br>{{ $addressee->name_primary }}
+                        <br><span class="primary">{{ $addressee->name_primary }}</span>
                         <br><span class="secondary">{{ $addressee->name_secondary }}</span>
                     
                     </span>
