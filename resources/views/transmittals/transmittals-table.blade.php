@@ -895,12 +895,6 @@
     .text-color {
         color: #BB2D3B;
     }
-    .custom-header{
-        background-color: #EE1A2E;
-    }
-    .modal-title {
-    color: #ffffff;
-    }
 
     .display-6 {
         color: #505050;
@@ -918,31 +912,106 @@
         padding: 8px 15px; /* Adjust padding as needed */
         white-space: nowrap; /* Prevent line breaks */
     }
+    .modal-title {
+        color: #EE1A2E;
+        font-weight: bold;
+    }
+    .btn-dangers {
+        font-size: 14px;
+        color: #EE1A2E;
+        padding: 8px; 
+        border: 1px solid #EE1A2E;
+        border-radius: 15px;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
 
+    @keyframes fadeIn {
+        from {
+            opacity: 0; 
+        }
+        to {
+            opacity: 1; 
+        }
+    }
+
+
+    .btn-dangers:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #EE1A2E;
+    }
+
+    .btn-dangers:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #EE1A2E; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .btn-clos {
+        font-size: 14px;
+        color: #646360;
+        padding: 8px; 
+        border-radius: 15px;
+        border: 1px solid #646360; 
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-clos:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #646360;
+    }
+
+    .btn-clos:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #646360; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
 
 </style>
 
 <div class="mssg position-fixed top-6 start-50 translate-middle-x h-5 w-1/4 z-50">
     <div class="mssg">
         @if(session('flash_mssg'))
-
             <div id="flashMessage" class="alert alert-primary" role="alert">
-
-            <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                <script src="https://cdn.lordicon.com/lordicon.js"></script>
                 <lord-icon
                     src="https://cdn.lordicon.com/skkahier.json"
-                    trigger="in"
+                    trigger="loop"
                     delay="4"
-                    state="in-trash-empty"
                     colors="primary:#ffffff"
                     style="width:17px; height:17px">
                 </lord-icon>
-
                 <p>&nbsp; {{ session('flash_mssg') }} </p>
             </div>
         @endif
     </div>
 </div>
+
 
 <div id="overlay"></div><!-- Add overlay div -->
 
@@ -1031,23 +1100,26 @@
 <!-- Modal for Delete Transmittal Record -->
 <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header custom-header">
-                <h5 class="modal-title" id="deleteConfirmationModalLabel">Transmittal Record</h5>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete this record?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-closs" onclick="closeModal()">Close</button>
+        <div class="modal-content border-1 border-red-900">
+            <h5 class="modal-title ml-4 mt-2" id="deleteConfirmationModalLabel"> Transmittal Record</h5>
+            <div class="my-2">
+                <hr class="ml-4 mr-4" style="border-top-width: 2px;">
+            </div>     
+            <p class="ml-4 mt-1">Are you sure you want to delete this record?
+                <br><span style="color: gray;">This data will not be recovered</span>
+            </p>
+            <div class="d-flex justify-content-end mr-4 mb-3 mt-2">
                 <form id="deleteForm" method="POST" action="">
                     @method('DELETE')
                     @csrf
-                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                    <button type="submit" class="btn btn-dangers">Delete</button>
                 </form>
+                <button type="button" class="btn btn-clos ml-3" onclick="closeModal()">Close</button>
             </div>
         </div>
     </div>
+</div>
+
 
 <script>
     $(document).ready(function() {

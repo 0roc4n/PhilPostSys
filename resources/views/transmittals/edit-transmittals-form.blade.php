@@ -789,6 +789,44 @@
         border-radius: 50px;
         animation: fadeIn 0.4s forwards; 
     }
+    .btn-closs {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #646360;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-closs:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #646360;
+    }
+
+    .btn-closs:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #646360; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
     .btn-submit {
         font-size: 14px;
         color: #fff;
@@ -843,12 +881,6 @@
         border-radius: 50px;
         animation: fadeIn 0.4s forwards; 
     }
-    .custom-header{
-        background-color: #0026C8;
-    }
-    .modal-title {
-    color: #ffffff;
-    }
     .counter-display {
         border: 1px solid blue; 
         border-radius: 40px; 
@@ -859,13 +891,153 @@
         padding: 6px 15px; /* Adjust padding as needed */
         white-space: nowrap; /* Prevent line breaks */
     }
-    .custom-header{
-        background-color: #0026C8;
-    }
+
+    /* Modal Confirmation design and buttons for Transmittal record */
     .modal-title {
-    color: #ffffff;
+        color: #EE1A2E;
+        font-weight: bold;
     }
-    
+    .btn-dangers {
+        font-size: 14px;
+        color: #EE1A2E;
+        padding: 8px; 
+        border: 1px solid #EE1A2E;
+        border-radius: 15px;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; 
+        }
+        to {
+            opacity: 1; 
+        }
+    }
+
+
+    .btn-dangers:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #EE1A2E;
+    }
+
+    .btn-dangers:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #EE1A2E; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .btn-clos {
+        font-size: 14px;
+        color: #646360;
+        padding: 8px; 
+        border-radius: 15px;
+        border: 1px solid #646360; 
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-clos:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #646360;
+    }
+
+    .btn-clos:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #646360; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+
+    /* Modal Confirmation  design and buttons  for Update Transmittal Record*/
+    .modal-title2 {
+        color: #FCBE00;
+        font-weight: bold;
+    }
+    .btn-warning2 {
+        font-size: 14px;
+        color: #FCBE00;
+        padding: 8px; 
+        border: 1px solid #FCBE00;
+        border-radius: 15px;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+    .btn-warning2:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #FCBE00;
+    }
+
+    .btn-warning2:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #FCBE00; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+
+    /* Modal design and buttons for Transmittal record */
+    .modal-title3 {
+        color: #0026C8;
+        font-weight: bold;
+    }
+
+    .btn-submit2 {
+        font-size: 14px;
+        color: #0026C8;
+        padding: 8px; 
+        border: 1px solid #0026C8;
+        border-radius: 15px;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+    .btn-submit2:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #0026C8;
+    }
+    .btn-submit2:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #0026C8; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
 </style>
 <div id="overlay"></div>
 <div class="row mt-2 align-items-center">
@@ -902,8 +1074,8 @@
     </div>
 @endif -->
 
-{{-- this form for update  --}}
-<form action="{{ url('transmittals/'. $records->id. '/update') }}" method="POST" class="p-3 needs-validation" onsubmit="event.preventDefault(); showconfirmationModal();">
+<!-- This form for update  -->
+<form id="updateTransmittalForm" action="{{ url('transmittals/'. $records->id. '/update') }}"  method="POST" class="p-3 needs-validation" onsubmit="event.preventDefault(); showconfirmationModal();">
     @csrf
     @method("PATCH")
     <div class="row mt-4">
@@ -935,24 +1107,24 @@
     </div>
 </form>
 
+
 <!-- Modal for Update transmittal -->
 <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header custom-header">
-                <h5 class="modal-title">Update Transmittal</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to update Transmittal Record?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger mr-3" onclick="closeModal()">Cancel</button>
-                <button type="button" class="btn btn-submit" onclick="submitForm()">Save Changes</button>
+        <div class="modal-content border-1 border-orange-900">
+            <h5 class="modal-title2 ml-4 mt-2">Transmittal Record</h5>
+            <div class="my-2">
+                <hr class="ml-4 mr-4 modal-title2" style="border-top-width: 2px;">
+            </div>     
+            <p class="ml-4 mt-1">Are you sure you want to update Transmittal Record?</p>
+            <div class="d-flex justify-content-end mr-4 mb-3 mt-3">
+                <button type="button" class="btn btn-clos" onclick="closemodal()">Close</button>
+                <button type="button" class="btn btn-warning2 ml-3" onclick="confirmForm()">Save Changes</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="content my-5">
     <table class="table table-size hover" id="returnCardsTable" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;">
@@ -976,11 +1148,12 @@
                         <th scope="row">{{ $index + 1 }}</th>
                         <td>{{ $rrt->returncard }}</td>
                         <td>
-                            <form method="POST" action="{{ route('return.destroy', $rrt->id) }}" accept-charset="UTF-8">
+                            <form id="deleteForm{{ $index }}" method="POST" action="{{ route('return.destroy', $rrt->id) }}">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-secondary whitespace-nowrap" onclick="return confirm('Confirm delete? {{ $rrt->returncard }}')">
-                                    <i class="fa-solid fa-circle-xmark"></i>Delete Item</button>   
+                                <button type="button" class="btn btn-danger delete-button whitespace-nowrap" data-delete-form="#deleteForm{{ $index }}" title="Delete Transmittal Record">
+                                    <i class="fa-solid fa-circle-xmark"></i>Remove
+                                </button>   
                             </form>
                         </td>
                     </tr>
@@ -988,6 +1161,26 @@
             @endif
         </tbody>
     </table>
+</div>
+
+
+<!-- Modal for Delete Transmittal Record -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content border-1 border-red-900">
+            <h5 class="modal-title ml-4 mt-2" id="deleteConfirmationModalLabel"> RRR Tracking Number</h5>
+            <div class="my-2">
+                <hr class="ml-4 mr-4 modal-title" style="border-top-width: 2px;">
+            </div>     
+            <p class="ml-4 mt-1">Are you sure you want to remove this record?
+                <br><span style="color: gray;">This data will not be recovered</span>
+            </p>
+            <div class="d-flex justify-content-end mr-4 mb-3 mt-2">
+                <button type="button" class="btn btn-dangers" id="confirmDeleteButton">Remove</button>
+                <button type="button" class="btn btn-clos ml-3" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--  modal for creating new addressee-->
@@ -1071,20 +1264,18 @@
 </div>
 </div>
 
-<!-- confirmation modal-->
+<!-- Modal for Update transmittal -->
 <div class="modal fade" id="ConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header custom-header">
-                <h5 class="modal-title">New RRR Tracking Number </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to Save Changes?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger mr-3" onclick="closeModal()">Cancel</button>
-                <button type="button" class="btn btn-submit" onclick="submitForm()">Save Changes</button>
+        <div class="modal-content border-1 border-blue-900">
+            <h5 class="modal-title3 ml-4 mt-2">New RRR Tracking Number</h5>
+            <div class="my-2">
+                <hr class="ml-4 mr-4 modal-title3" style="border-top-width: 2px;">
+            </div>     
+            <p class="ml-4 mt-1">Are you sure you want to add changes?</p>
+            <div class="d-flex justify-content-end mr-4 mb-3 mt-3">
+                <button type="button" class="btn btn-clos" onclick="closemodal()">Close</button>
+                <button type="button" class="btn btn-submit2 ml-3" onclick="submitForm()">Save Changes</button>
             </div>
         </div>
     </div>
@@ -1132,15 +1323,42 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        if ($('#flashMessage').length > 0) {
-            $('#overlay').fadeIn('slow');
-        }
+$(document).ready(function() {
+    // Check if flash message exists
+    if ($('#flashMessage').length > 0) {
+        $('#overlay').fadeIn('slow');
+    }
 
-        setTimeout(function() {
-            $('#flashMessage').fadeOut('slow');
-            $('#overlay').fadeOut('slow');
-        }, 700);
+    // Hide flash message and overlay after a delay
+    setTimeout(function() {
+        $('#flashMessage').fadeOut('slow');
+        $('#overlay').fadeOut('slow');
+    }, 400);
+});
+
+// Function to submit the form in the modal
+function confirmForm() {
+    // Submit the form
+    document.getElementById('updateTransmittalForm').submit();
+    
+    // Show flash message
+    $('#overlay').fadeIn('slow');
+}
+
+    $(document).ready(function() {
+        $('.delete-button').on('click', function() {
+            var deleteForm = $(this).data('delete-form');
+            $('#deleteConfirmationModal').data('form', deleteForm).modal('show');
+        });
+
+        $('#confirmDeleteButton').on('click', function() {
+            var deleteForm = $($('#deleteConfirmationModal').data('form'));
+            deleteForm.submit();
+        });
+
+        window.closeModal = function() {
+            $('#deleteConfirmationModal').modal('hide');
+        };
     });
 
     $(document).ready(function() {
@@ -1232,10 +1450,6 @@
             }
         }
     }
-    function closeModal() {
-        $('#newAddresseeModal').modal('hide');
-        $('#confirmationModal').modal('hide');
-    }
 
     function openModal() {
         $('#newAddresseeModal').modal('show');
@@ -1313,12 +1527,23 @@
         $('#newRRRModal').modal('hide'); 
         $('#ConfirmationModal').modal('show'); 
     }
+
     function closeModal() {
+        $('#newAddresseeModal').modal('hide');
+        $('#confirmationModal').modal('hide');
+    }
+    function closemodal() {
         $('#ConfirmationModal').modal('hide');
+        $('#confirmationModal').modal('hide');
+
     }
     function submitForm() {
         // Submit the form
         document.getElementById('returnForm').submit();
+    }
+    function confirmForm() {
+        // Submit the form
+        document.getElementById('updateTransmittalForm').submit();
     }
 
 </script>
