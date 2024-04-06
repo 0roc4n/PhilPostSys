@@ -69,14 +69,13 @@
         z-index: 40; /* Below flash message */
     }
 
-    .btn-clear {
+    .btn-view {
         font-size: 14px;
-        font-weight: lighter;
         color: #fff;
         padding: 8px; 
         border: none; 
         border-radius: 15px;
-        background: #18191A;
+        background: #0026C8;
         outline: none; 
         position: relative; 
         transition: all 0.4s ease;
@@ -91,25 +90,140 @@
         }
     }
 
-    .btn-clear:hover {
+
+    .btn-view:hover {
         color: #fff;
-        border-radius: 100px;
-        background: #18191A;
+        border-radius: 50px;
+        background: #0026C8;
     }
 
-    .btn-clear:hover::after {
+    .btn-view:hover::after {
         content: '';
         position: absolute;
         top: -5px;
         left: -5px; 
         right: -5px; 
         bottom: -5px; 
-        border: 2px solid #18191A; 
+        border: 2px solid #0026C8; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .btn-closs {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #646360;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-closs:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #646360;
+    }
+
+    .btn-closs:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #646360; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .btn-warning {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #FCBE00;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-warning:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #FCBE00;
+    }
+
+    .btn-warning:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #FCBE00; 
         border-radius: 50px;
         animation: fadeIn 0.4s forwards; 
     }
 
+    .btn-danger {
+        font-size: 14px;
+        color: #fff;
+        padding: 8px; 
+        border: none; 
+        border-radius: 15px;
+        background: #EE1A2E;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
 
+    @keyframes fadeIn {
+        from {
+            opacity: 0; 
+        }
+        to {
+            opacity: 1; 
+        }
+    }
+
+
+    .btn-danger:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #EE1A2E;
+    }
+
+    .btn-danger:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #EE1A2E; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
     .btn-save {
         font-size: 14px;
         color: #fff;
@@ -194,9 +308,16 @@
         padding: 0 4px;
         color: #2d3748;
    }
+   .custom-header{
+        background-color: #0026C8;
+    }
+    .modal-title {
+    color: #ffffff;
+    }
+    
+   
 </style>
-
-<div class="mb-8">
+<div class="ml-1">
     <div class="flex justify-between items-center">
         <h1 class="display-6"> Add New Addressee </h1>
     </div>
@@ -215,7 +336,7 @@
 <div id="overlay"></div><!-- Add overlay div -->
 
 <div class="row mt-3">
-    <form action="/add_addressee" method="post" id="addresseeForm">
+<form action="/add_addressee" method="POST" id="addresseeForm" class="p-3 needs-validation" onsubmit="event.preventDefault(); showConfirmationModal();">
         @csrf
         <div class="box-container rounded border">
             <div class="label">Addressee Information</div>
@@ -274,10 +395,28 @@
             </div>
         </div>
         <div class="flex justify-end mt-3">
-            <button type="button" class="btn btn-clear text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" onclick="clearForm()">Clear</button>
-            <button type="submit" class="btn btn-save text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full px-3 py-2.5 text-sm text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" id="submitBtn">Save Addressee</button>
+            <button type="button" class="btn-closs mr-3" onclick="clearForm()">Clear</button>
+            <button type="submit" class="btn btn-save" id="submitBtn">Save Addressee</button>
         </div>
     </form>
+</div>
+<!-- Add your modal HTML structure -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header custom-header">
+                <h5 class="modal-title">Add New Addressee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to save this addressee?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-closs mr-3" onclick="closeModal()">Cancel</button>
+                <button type="button" class="btn btn-save" onclick="confirmSubmit()">Save Addressee</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -285,21 +424,17 @@
         if ($('#flashMessage').length > 0) {
             $('#overlay').fadeIn('slow');
         }
-
         setTimeout(function() {
             $('#flashMessage').fadeOut('slow');
             $('#overlay').fadeOut('slow');
         }, 1000);
     });
-
     $(document).ready(function () {
         $('#nameAbbrev').on('blur', checkMailTrackingNumber);
     });
-
     function checkMailTrackingNumber() {
         var nameAbbrev = $('#nameAbbrev').val();
         console.log(nameAbbrev);
-
         $.ajax({
             type: 'GET',
             url: '/checkAddressee',
@@ -308,11 +443,9 @@
             error: handleCheckError
         });
     }
-
     function handleCheckSuccess(response) {
         var abbrevErrorElement = $('#abbrev_error');
         var submitButton = $('#submitBtn');
-
         if (response.exists) {
             abbrevErrorElement.html('<i class="fa-solid fa-circle-exclamation fa-fade fa-sm"></i>   Addressee already exists');
             console.log('Addressee already exists');
@@ -332,5 +465,15 @@
         // Clear all input fields inside the form
         document.getElementById("addresseeForm").reset();
     }
-
+</script>
+<script>
+    function confirmSubmit() {
+        document.getElementById('addresseeForm').submit();
+    }
+    function showConfirmationModal() {
+        $('#confirmationModal').modal('show');
+    }
+    function closeModal() {
+        $('#confirmationModal').modal('hide');
+    }
 </script>

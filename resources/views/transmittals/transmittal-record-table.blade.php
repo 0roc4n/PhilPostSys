@@ -1002,7 +1002,7 @@
         setTimeout(function() {
             $('#flashMessage').fadeOut('slow');
             $('#overlay').fadeOut('slow');
-        }, 1000);
+        }, 400);
     });
         $(document).ready(function() {
             $('#example').DataTable({
