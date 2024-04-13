@@ -47,10 +47,11 @@
         margin-bottom: 0 !important;
     }
     #flashMessage.alert-primary {
-        background-color:#0D6EFD; 
-        color: #fff;
+        background-color: white; /* Remove background color */
+        color: #0026C8;
         text-align: center; 
         display: flex;
+        border: 1px solid #0026C8; 
         align-items: center;
         justify-content: center;
         font-weight: 600; 
@@ -58,6 +59,7 @@
         z-index: 50;
         border-radius: 15px !important;
     }
+
     #overlay {
         position: fixed;
         top: 0;
@@ -308,11 +310,73 @@
         padding: 0 4px;
         color: #2d3748;
    }
-   .custom-header{
-        background-color: #0026C8;
+    /* Modal design and buttons for Transmittal record */
+     .modal-title3 {
+        color: #0026C8;
+        font-weight: bold;
     }
-    .modal-title {
-    color: #ffffff;
+    .btn-clos {
+        font-size: 14px;
+        color: #646360;
+        padding: 8px; 
+        border-radius: 15px;
+        border: 1px solid #646360; 
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
+    }
+
+    .btn-clos:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #646360;
+    }
+
+    .btn-clos:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #646360; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+    .btn-submit2 {
+        font-size: 14px;
+        color: #0026C8;
+        padding: 8px; 
+        border: 1px solid #0026C8;
+        border-radius: 15px;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+    .btn-submit2:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #0026C8;
+    }
+    .btn-submit2:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #0026C8; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
     }
     
    
@@ -321,7 +385,7 @@
     <div class="flex justify-between items-center">
         <h1 class="display-6"> Add New Addressee </h1>
     </div>
-        <p class="text-gray-400 ml-4">Please fill in all fields with an asterisk (*) </p>
+        <p class="text-gray-400">Please fill in all fields with an asterisk (*) </p>
 </div>
 <div class="mssg position-fixed top-6 start-50 translate-middle-x h-5 w-1/4 z-50">
     <div class="mssg">
@@ -395,25 +459,23 @@
             </div>
         </div>
         <div class="flex justify-end mt-3">
-            <button type="button" class="btn-closs mr-3" onclick="clearForm()">Clear</button>
+            <button type="button" class="btn-clos mr-3" onclick="clearForm()">Clear</button>
             <button type="submit" class="btn btn-save" id="submitBtn">Save Addressee</button>
         </div>
     </form>
 </div>
-<!-- Add your modal HTML structure -->
+<!-- Modal for Add Addressee Form -->
 <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header custom-header">
-                <h5 class="modal-title">Add New Addressee</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to save this addressee?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-closs mr-3" onclick="closeModal()">Cancel</button>
-                <button type="button" class="btn btn-save" onclick="confirmSubmit()">Save Addressee</button>
+        <div class="modal-content border-1 border-blue-900">
+            <h5 class="modal-title3 ml-4 mt-2">Add New Addressee</h5>
+            <div class="my-2">
+                <hr class="ml-4 mr-4 modal-title3" style="border-top-width: 2px;">
+            </div>     
+            <p class="ml-4 mt-1">Are you sure you want to submit this form?</p>
+            <div class="d-flex justify-content-end mr-4 mb-3 mt-3">
+                <button type="button" class="btn btn-clos" onclick="closeModal()">Cancel</button>
+                <button type="button" class="btn btn-submit2 ml-3" onclick="confirmSubmit()">Submit</button>
             </div>
         </div>
     </div>
@@ -427,7 +489,7 @@
         setTimeout(function() {
             $('#flashMessage').fadeOut('slow');
             $('#overlay').fadeOut('slow');
-        }, 1000);
+        }, 2000);
     });
     $(document).ready(function () {
         $('#nameAbbrev').on('blur', checkMailTrackingNumber);
