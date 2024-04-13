@@ -730,24 +730,16 @@
     }
 
     #flashMessage.alert-primary {
-        background-color: #0D6EFD; 
-        color: #fff;
+        background-color: white; /* Remove background color */
+        color: #0026C8;
         text-align: center; 
         display: flex;
+        border: 1px solid #0026C8; 
         align-items: center;
         justify-content: center;
         font-weight: 600; 
-    }
-    #flashMessage.alert-primary {
-        background-color:#0D6EFD; 
-        color: #fff;
-        text-align: center; 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600; 
-        position: relative; /* Add relative positioning for overlay */
-        z-index: 50; /* Ensure flash message is above overlay */
+        position: relative;
+        z-index: 50;
         border-radius: 15px !important;
     }
 
@@ -1038,6 +1030,13 @@
         border-radius: 50px;
         animation: fadeIn 0.4s forwards; 
     }
+    .custom-header{
+        background-color: #0026C8;
+    }
+    .modal-title4 {
+        color: #fff;
+        font-weight: bold;
+    }
 </style>
 <div id="overlay"></div>
 <div class="row mt-2 align-items-center">
@@ -1232,7 +1231,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header custom-header">
-                <h5 class="modal-title" id="newRRRModalLabel">New RRR Tracking Number</h5>
+                <h5 class="modal-title4" id="newRRRModalLabel">New RRR Tracking Number</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="row d-flex">
@@ -1256,7 +1255,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-clos" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-submit">Submit</button>
             </div>
         </form>
@@ -1264,7 +1263,7 @@
 </div>
 </div>
 
-<!-- Modal for Update transmittal -->
+<!-- Modal for Add RRR Tracking Number -->
 <div class="modal fade" id="ConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content border-1 border-blue-900">

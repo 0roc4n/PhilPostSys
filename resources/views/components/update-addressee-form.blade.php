@@ -43,17 +43,19 @@
         text-decoration: none; /* Remove underline on hover if needed */
     }
     #flashMessage.alert-primary {
-        background-color:#0D6EFD; 
-        color: #fff;
+        background-color: white; /* Remove background color */
+        color: #0026C8;
         text-align: center; 
         display: flex;
+        border: 1px solid #0026C8; 
         align-items: center;
         justify-content: center;
         font-weight: 600; 
-        position: relative; /* Add relative positioning for overlay */
+        position: relative;
         z-index: 50;
         border-radius: 15px !important;
     }
+
     #overlay {
         position: fixed;
         top: 0;
@@ -384,12 +386,78 @@
         padding: 0 4px;
         color: #2d3748;
    }
-   .custom-header{
-        background-color: #0026C8;
+
+    .btn-clos {
+        font-size: 14px;
+        color: #646360;
+        padding: 8px; 
+        border-radius: 15px;
+        border: 1px solid #646360; 
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
     }
-    .modal-title {
-    color: #ffffff;
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start from fully transparent */
+        }
+        to {
+            opacity: 1; /* Fade in to fully opaque */
+        }
     }
+
+    .btn-clos:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #646360;
+    }
+
+    .btn-clos:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #646360; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+
+    /* Modal Confirmation  design and buttons  for Update addressee*/
+    .modal-title2 {
+        color: #FCBE00;
+        font-weight: bold;
+    }
+    .btn-warning2 {
+        font-size: 14px;
+        color: #FCBE00;
+        padding: 8px; 
+        border: 1px solid #FCBE00;
+        border-radius: 15px;
+        outline: none; 
+        position: relative; 
+        transition: all 0.4s ease;
+    }
+    .btn-warning2:hover {
+        color: #fff;
+        border-radius: 50px;
+        background: #FCBE00;
+    }
+
+    .btn-warning2:hover::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        left: -5px; 
+        right: -5px; 
+        bottom: -5px; 
+        border: 2px solid #FCBE00; 
+        border-radius: 50px;
+        animation: fadeIn 0.4s forwards; 
+    }
+
     
 </style>
 
@@ -475,20 +543,19 @@
     </form>
 </div>
 
-<!-- Add your modal HTML structure -->
-<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true" >
+
+<!-- Modal for Update transmittal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header custom-header">
-                <h5 class="modal-title">Update Addressee</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to save changes?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-closs mr-3" onclick="closeModal()">Cancel</button>
-                <button type="button" class="btn btn-save" onclick="confirmSubmit()">Save, Changes</button>
+        <div class="modal-content border-1 border-orange-900">
+            <h5 class="modal-title2 ml-4 mt-2">Update Addressee</h5>
+            <div class="my-2">
+                <hr class="ml-4 mr-4 modal-title2" style="border-top-width: 2px;">
+            </div>     
+            <p class="ml-4 mt-1">Are you sure you want to update addressee information?</p>
+            <div class="d-flex justify-content-end mr-4 mb-3 mt-3">
+                <button type="button" class="btn btn-clos" onclick="closeModal()">Close</button>
+                <button type="button" class="btn btn-warning2 ml-3" onclick="confirmSubmit()">Save Changes</button>
             </div>
         </div>
     </div>
