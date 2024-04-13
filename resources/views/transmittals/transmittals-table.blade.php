@@ -619,17 +619,19 @@
         border: 2px solid red; 
     }
     #flashMessage.alert-primary {
-        background-color:#0D6EFD; 
-        color: #fff;
+        background-color: white; /* Remove background color */
+        color: #0026C8;
         text-align: center; 
         display: flex;
+        border: 1px solid #0026C8; 
         align-items: center;
         justify-content: center;
         font-weight: 600; 
-        position: relative; /* Add relative positioning for overlay */
+        position: relative;
         z-index: 50;
         border-radius: 15px !important;
     }
+
     #overlay {
         position: fixed;
         top: 0;
@@ -640,6 +642,7 @@
         display: none; /* Initially hidden */
         z-index: 40; /* Below flash message */
     }
+
 
     .btn-view {
         font-size: 14px;
