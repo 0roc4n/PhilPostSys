@@ -195,7 +195,7 @@
     <div class="envelope"></div>
     <div class="letter">
         <div  class="flex justify-center items-center mb-10 mt-3">
-            <!--<img src="{{ asset('assets/PHLPOSTLogo.png') }}" alt="PhilPostLogo" class="h-10 fill-current text-gray-800" /> -->
+            <img src="{{ asset('assets/PHLPOSTLogo.png') }}" alt="PhilPostLogo" class="h-10 fill-current text-gray-800" /> 
         </div>  
         {{ $slot }}
     </div>
