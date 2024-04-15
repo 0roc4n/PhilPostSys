@@ -102,25 +102,24 @@
             z-index: 2;
             transition: 0.5s;
             justify-content: center;
-            align-items: center;
             flex-direction: column;
             overflow: hidden; /* Ensure contents are not visible initially */
         }
 
         .letter form {
             font-family: Arial;
-            display: flex;
             flex-direction: column;
-            align-items: center;
+            border-radius: 15px;
+
         }
 
         .letter input {
-            margin-bottom: 10px;
-            padding: 1px;
+            color: #4a5568; /* Text color: gray-700 */
+            font-size: 0.875rem; /* Font size: 16px */
             border: 1px solid #ccc;
             border-radius: 15px;
-            width: 400px; /* Adjust the width as needed */
         }
+
 
         .letter input[type="submit"] {
             padding: 5px 10px;
@@ -130,15 +129,6 @@
             border: none;
             border-radius: 4px;
         }
-
-        .letter p {
-            text-align: center;
-            font-size: 20px;
-            font-family: Arial;
-            margin-bottom: 11px;
-            color: #3b4049;
-        }
-
         .wrapper:hover .lid.one {
             transform: rotateX(90deg);
             transition-delay: 0s;
@@ -179,7 +169,7 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         @media (max-width: 767px) {
@@ -200,20 +190,15 @@
 </head>
 <body>
 <div class="wrapper">
-    <div class="lid one">
-        <!-- Add an image for the photo -->
-        <img
-                src="public/assets/PHLPOSTLogo.png"
-                alt="PhilPost Office Logo"
-                width="100"
-        />
-    </div>
+    <div class="lid one"></div>
     <div class="lid two"></div>
-<div class="envelope"></div>
-<div class="letter">
-    <p>Log In</p>
-    {{ $slot }}
-</div>
+    <div class="envelope"></div>
+    <div class="letter">
+        <div  class="flex justify-center items-center mb-10 mt-3">
+            <!--<img src="{{ asset('assets/PHLPOSTLogo.png') }}" alt="PhilPostLogo" class="h-10 fill-current text-gray-800" /> -->
+        </div>  
+        {{ $slot }}
+    </div>
 </div>
 
 <!-- JavaScript/jQuery for opening the envelope on click -->
