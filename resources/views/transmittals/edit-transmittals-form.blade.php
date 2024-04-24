@@ -351,7 +351,7 @@
 
         .dataTables_wrapper .dataTables_filter input {
             border: 1px solid #aaa;
-            width: 300px;
+            width: 500px;
             border-radius: 15px;
             background-color: transparent;
         }
@@ -954,7 +954,7 @@
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-secondary whitespace-nowrap" onclick="return confirm('Confirm delete? {{ $rrt->returncard }}')">
-                                    <i class="fa-solid fa-circle-xmark"></i>Delete Item</button>   
+                                    <i class="fa-solid fa-circle-xmark"></i>Remove</button>   
                             </form>
                         </td>
                     </tr>
