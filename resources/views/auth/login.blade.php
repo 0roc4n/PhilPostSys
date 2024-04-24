@@ -18,6 +18,9 @@
     <x-guest-layout>
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
+        <div  class="flex justify-center items-center mb-10 mt-3">
+            <img src="{{ asset('assets/PHLPOSTLogo.png') }}" alt="PhilPostLogo" class="h-10 fill-current text-gray-800" /> 
+        </div>
 
         <div class="login-form-container flex justify-center mt-5"> <!-- Added mt-10 to add margin at the top -->
             <!-- First column for image -->
@@ -60,17 +63,11 @@
                             </a>
                         @endif
                     </div>
-                    
-
-
                     <div class="flex justify-center mt-5">
                         <x-primary-button class="ms-3 bg-blue-700 hover:bg-blue-900" id="login-button" style="border-radius: 15px;">
                             {{ __('Log in') }}
                         </x-primary-button>
                     </div>
-                    
-                    
-                    
                 </form>
             </div>
         </div>
