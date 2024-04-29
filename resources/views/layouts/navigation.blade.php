@@ -21,7 +21,7 @@
 
         <!-- Title -->
         <div class="hidden sm:flex sm:items-center sm:ms-6">
-            <span style="font-weight:900; font-size: 19px;">PHILPOST </span> &nbsp;
+            <span style="font-weight:900; font-size: 19px;">PHLPOST </span> &nbsp;
             <span style="font-weight: medium; color: #888; font-size: 19px;">RRR Tracking</span>
         </div>
         <div class="hidden sm:flex sm:items-center sm:ms-6">

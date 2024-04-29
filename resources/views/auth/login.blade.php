@@ -24,16 +24,13 @@
 
         <div class="login-form-container flex justify-center mt-5"> <!-- Added mt-10 to add margin at the top -->
             <!-- First column for image -->
-            <div class="w-1/2">
-                <img class="h-auto w-1/2 ml-10" src="{{ asset('assets/phlpost_login1.png') }}" alt="phlpost"/>
-            </div>
                
             <!-- Second column for login form -->
-            <div class="w-1/2 mr-7 ml">
+            <div class="left w-full">
                 <form method="POST" action="{{ route('login') }}" class="mx-auto max-w-md"> <!-- Added mx-auto and max-w-md to center the form and limit its width -->
                     @csrf
 
-                    <h1 class="text-gray-500 text-sm font-semibold mb-4 ml-3"> Log In to PHLPOST RRR Tracking System</h1>
+                    <h1 class="text-gray-500 text-sm font-semibold flex justify-center mb-4"> Log In to PHLPOST RRR Tracking System</h1>
                     <!-- Email Address -->
                     <div class="form-group relative mb-3">
                         <x-text-input type="email" id="email" name="email" :value="old('email')" required autofocus autocomplete="username" class="block mt-1 w-full text-dark form-control block px-3 pb-2.5 pt-3 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer h-10" placeholder=" " required/>
