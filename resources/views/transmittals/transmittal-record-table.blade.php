@@ -335,7 +335,7 @@
         }
         .dataTables_wrapper .dataTables_length {
         float: left;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         }
         .dataTables_wrapper .dataTables_length select {
         border: 1px solid #aaa;
@@ -351,9 +351,10 @@
 
         .dataTables_wrapper .dataTables_filter input {
             border: 1px solid #aaa;
-            width: 500px;
+            width: 300px;
             border-radius: 15px;
             background-color: transparent;
+            margin-bottom: 10px;
         }
 
         .dataTables_wrapper .dataTables_filter input::placeholder {
@@ -875,12 +876,9 @@
         </div>
         
         <div id="overlay"></div><!-- Add overlay div -->
-        <div class="row mb-5 align-items-center">
+        <div class="row mb-5 justify-between">
             <div class="col-md-8 col-lg-5 col-sm-6">
                 <h1 class="display-6"><a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>Transmittal Record</h1>
-            </div>
-            <div class="col-md-2 col-sm-6 col-lg-3 my-2">
-                <div class="counter-display text-center">{{$count}} Records</div>
             </div>
             <div class="col-md-12 col-lg-4 my-2 sm:text-end">
                 <button class="btn btn-outline-success whitespace-nowrap" onclick="exportToExcel()">
@@ -938,7 +936,7 @@
                     <div class="container-fluid my-5">
                         <div class="row justify-content-center">
                             <div class="col-12">
-                                <table class="table table-size mt-5" id="example" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;">
+                                <table class="table table-size mt-1" id="example" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;">
                                     <thead class="text-center">
                                         <tr>
                                             <th scope="col-items">Items</th>

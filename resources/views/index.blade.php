@@ -98,11 +98,6 @@
                 </div>
                 <div class="hover:bg-gray-300 rounded-md ml-2 text-sm">
                     <button class="flex items-center p-2">
-                        <a href="/#">About</a>
-                    </button>
-                </div>
-                <div class="hover:bg-gray-300 rounded-md ml-2 text-sm">
-                    <button class="flex items-center p-2">
                         <a href="/login">Login</a>
                     </button>
                 </div>
@@ -129,7 +124,7 @@
 
     <!-- Footer Section -->
     <footer class="copyright p-1">
-        <p>Copyright © 2024 All Rights Reserved by Philpost Corporation, Legazpi</p>
+        <p>Copyright © 2024 All Rights Reserved by Phlpost Corporation, Legazpi</p>
     </footer>
 
     <script>
