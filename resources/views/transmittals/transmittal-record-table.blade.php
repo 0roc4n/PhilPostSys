@@ -897,15 +897,18 @@
                 {{$count}} Records
             </span>
             <div class="rounded-container d-inline-block">
-                <div class="d-flex align-items-center mx-1 py-1">
-                    <span class="tracking mx-1 nowrap">Tracking Number</span>
-                    <span class="bold highlight nowrap">
+                <div class="d-flex align-items-center mx-2 py-1">
+                    <div class="tracking nowrap">Tracking Number</div>
+                </div>
+                <div>
+                    <div class="mx-2 bold highlight nowrap d-flex items-center justify-between mb-2">
                         <i class="fa-solid fa-caret-right"></i>
-                        <span class="mail-track-number">{{ $records->mailTrackNum }}</span>
+                        <div class="mail-track-number justify-center">{{ $records->mailTrackNum }}</div>
                         <i class="fa-solid fa-caret-left"></i>
-                    </span>          
+                    </div>      
                 </div>
             </div>
+            
         </div>
 
             <p class="labelsdate"><br />Date Posted</p>
