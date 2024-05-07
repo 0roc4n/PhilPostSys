@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AddresseeList;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class AddresseeController extends Controller
 {
     public function showIndex()
     {
+        if(Auth::user()->role == "root"){
+            return view('new-addressee');
+        }
+        return redirect('/dashboard');
         
-        return view('new-addressee');
+        
     }
 
     public function showUpdateAddressee($addressee_id)
@@ -44,7 +49,8 @@ class AddresseeController extends Controller
                 'province' => ucwords($request->input('province'))
             ]);
             
-            return redirect()->back()->with('flash_mssg', 'Addressee Added Successfully');
+            //return redirect()->back()->with('flash_mssg', 'Addressee Added Successfully');
+            return redirect('/add_transmittal')->with('flash_mssg', 'Addressee Added Successfully');
         } catch (ValidationException $e) {
             // If validation fails, redirect back with errors and input data
             return redirect()->back()->withErrors($e->errors())->withInput();
