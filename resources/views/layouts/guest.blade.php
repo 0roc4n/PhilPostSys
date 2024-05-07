@@ -173,8 +173,84 @@
         }
 
         @media (max-width: 767px) {
-            .login-form-container {
-                padding: 0 10px;
+
+        .lid {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 4px;
+            border-right: 190px solid transparent; /* Adjust the border sizes */
+            border-bottom: 50px solid transparent; /* Adjust the border sizes */
+            border-left: 190px solid transparent; /* Adjust the border sizes */
+            transform-origin: top;
+            transition: transform 0.25s linear;
+        }
+
+        /* lid when closed */
+        .lid.one {                
+            border-radius: 4px;
+            border-top: 190px solid #edeade; /* Adjust the border size and color */
+            transform: rotateX(0deg);
+            z-index: 7;
+            transition-delay: 0.75s;
+        }
+
+        /* lid when opened */
+        .lid.two {
+            border-radius: 4px;
+            border-top: 50px solid #dad8cf; /* Adjust the border size and color */
+            transform: rotateX(90deg);
+            z-index: 1;
+            transition-delay: 0.5s;
+        }
+
+
+            .wrapper {
+                width: 99%;
+                max-width: 100%;
+            }
+            
+            .letter {
+                width: 100%; /* Adjusted width for smaller screens */
+                max-width: 100%; /* Take full width on smaller screens */
+            }
+
+            .envelope {
+            position: absolute;
+            height: 100; /* Adjust the height of the envelope */
+            width: 100%; /* Adjust the width of the envelope */
+            top: 40%; /* Move the envelope slightly down */
+            left: 0;
+            border-radius: 4px;
+            border-top: 130px solid transparent; /* Adjust the border sizes */
+            border-right: 190px solid #dad8cf; /* Adjust the border sizes and color */
+            border-bottom: 130px solid #dad8cf; /* Adjust the border sizes and color */
+            border-left: 190px solid #dad8cf; /* Adjust the border sizes and color */
+            z-index: 3;
+            cursor: pointer; /* Add cursor pointer for click effect */
+        }
+
+
+            .letter {
+                height: 150px; /* Adjusted height for smaller screens */
+            }
+
+            .letter form {
+                padding: 8px; /* Adjusted padding for smaller screens */
+            }
+
+            .letter input {
+                padding: 4px; /* Adjusted padding for smaller screens */
+                margin-bottom: 3px; /* Adjusted margin for smaller screens */
+            }
+
+            .letter input[type="submit"] {
+                padding: 4px 8px; /* Adjusted padding for smaller screens */
+            }
+            .left{
+                width: 50%;
             }
         }
 
@@ -185,6 +261,12 @@
 
         .login-form-container {
             margin-right: 20px; /* Adjust margin between image and form */
+        }
+        .left{
+            width: 80%;
+        }
+        .right{
+            width: 50%;
         }
     </style>
 </head>

@@ -623,28 +623,26 @@
         }
 
         @media screen and (max-width: 767px) {
-        .dataTables_wrapper .dataTables_info,
-        .dataTables_wrapper .dataTables_paginate {
-            float: none;
-            text-align: center;
-        }
-        .dataTables_wrapper .dataTables_paginate {
-            margin-top: 0.5em;
-        }
-        }
-        @media screen and (max-width: 640px) {
-        .dataTables_wrapper .dataTables_length{
-            float: none;
-            text-align: start;
-        }
-        .dataTables_wrapper .dataTables_filter {
-            float: none;
-            text-align: end;
-        }
-        .dataTables_wrapper .dataTables_filter {
-            margin-top: 0.5em;
-        }
-        }
+            .dataTables_wrapper .dataTables_info,
+            .dataTables_wrapper .dataTables_paginate {
+                float: none;
+                text-align: center;
+            }
+            .dataTables_wrapper .dataTables_paginate {
+                margin-top: 0.5em;
+            }
+
+            /* Centering and full width for filter input */
+            .dataTables_wrapper .dataTables_filter {
+                margin-top: 6px;
+                float: none;
+                text-align: center;
+                width: 250px;
+            }
+            .dataTables_wrapper .dataTables_filter input {
+                width: 250px;
+            }
+        }   
 
     /* end - table */
 
