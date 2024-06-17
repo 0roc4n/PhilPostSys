@@ -335,7 +335,7 @@
         }
         .dataTables_wrapper .dataTables_length {
         float: left;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         }
         .dataTables_wrapper .dataTables_length select {
         border: 1px solid #aaa;
@@ -351,9 +351,10 @@
 
         .dataTables_wrapper .dataTables_filter input {
             border: 1px solid #aaa;
-            width: 500px;
+            width: 300px;
             border-radius: 15px;
             background-color: transparent;
+            margin-bottom: 10px;
         }
 
         .dataTables_wrapper .dataTables_filter input::placeholder {
@@ -875,12 +876,9 @@
         </div>
         
         <div id="overlay"></div><!-- Add overlay div -->
-        <div class="row mb-5 align-items-center">
+        <div class="row mb-5 justify-between">
             <div class="col-md-8 col-lg-5 col-sm-6">
                 <h1 class="display-6"><a href="{{ url('/tracer') }}"><i class="fa-solid fa-angle-left"></i></a>Transmittal Record</h1>
-            </div>
-            <div class="col-md-2 col-sm-6 col-lg-3 my-2">
-                <div class="counter-display text-center">{{$count}} Records</div>
             </div>
             <div class="col-md-12 col-lg-4 my-2 sm:text-end">
                 <button class="btn btn-outline-success whitespace-nowrap" onclick="exportToExcel()">
@@ -899,15 +897,18 @@
                 {{$count}} Records
             </span>
             <div class="rounded-container d-inline-block">
-                <div class="d-flex align-items-center mx-1 py-1">
-                    <span class="tracking mx-1 nowrap">Tracking Number</span>
-                    <span class="bold highlight nowrap">
+                <div class="d-flex align-items-center mx-2 py-1">
+                    <div class="tracking nowrap">Tracking Number</div>
+                </div>
+                <div>
+                    <div class="mx-2 bold highlight nowrap d-flex items-center justify-between mb-2">
                         <i class="fa-solid fa-caret-right"></i>
-                        <span class="mail-track-number">{{ $records->mailTrackNum }}</span>
+                        <div class="mail-track-number justify-center">{{ $records->mailTrackNum }}</div>
                         <i class="fa-solid fa-caret-left"></i>
-                    </span>          
+                    </div>      
                 </div>
             </div>
+            
         </div>
 
             <p class="labelsdate"><br />Date Posted</p>
@@ -938,7 +939,7 @@
                     <div class="container-fluid my-5">
                         <div class="row justify-content-center">
                             <div class="col-12">
-                                <table class="table table-size mt-5" id="example" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;">
+                                <table class="table table-size mt-1" id="example" style="border: 1px solid #D3D3D3; border-radius: 30px; overflow: auto; padding: 20px;">
                                     <thead class="text-center">
                                         <tr>
                                             <th scope="col-items">Items</th>

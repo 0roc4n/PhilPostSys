@@ -247,12 +247,27 @@ body {
   color: var(--blue);
 }
 
-.cardBox .card .cardName {
-  color: var(--black2);
-  font-size: 14px;
-  margin-top: 5px;
-  line-height: 9px;
+.cardBox .card .number {
+  position: relative;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--blue);
 }
+
+.cardBox .card .abbrevcount {
+  position: relative;
+  font-weight: 500;
+  font-size: 2rem;
+  color: var(--blue);
+}
+
+
+
+.cardBox .card .cardName {
+    color: var(--black2);
+    font-size: 14px;
+}
+
 
 .cardBox .card .iconBx {
   font-size: 40px;
@@ -263,6 +278,8 @@ body {
   background: var(--blue);
 }
 .cardBox .card:hover .numbers,
+.cardBox .card:hover .number,
+.cardBox .card:hover .abbrevcount,
 .cardBox .card:hover .cardName,
 .cardBox .card:hover .iconBx {
   color: var(--white);
@@ -535,7 +552,7 @@ body {
                 <div class="col">
                   <a href="/tracer">
                     <div class="numbers">{{ $tolNo }}</div>
-                    <div class="cardName">Most No. of Transmittals</div>
+                    <div class="cardName flex">Most No. of Transmittals</div>
                     <div class="cardName">{{ \Carbon\Carbon::parse($freqDate)->format('F j, Y') }}</div>
                   </a>
                 </div>
@@ -550,10 +567,13 @@ body {
                 <!-- Left Column for Number and Title -->
                 <div class="col">
                   <a href="/tracer">
-                    <div class="numbers">
-                      {{ $mostUsedAbbreviation }}
-                      <span class="abbrevcount">{{ $mostUsedAbbreviationCount }}</span>
+                    <div class="abbrevcount">
+                        {{ $mostUsedAbbreviationCount }}
                     </div>
+                    <div class="number">
+                      {{ $mostUsedAbbreviation }}
+                  </div>
+                    
                     <div class="cardName">Top Transmittals</div>
                   </a>
                 </div>
